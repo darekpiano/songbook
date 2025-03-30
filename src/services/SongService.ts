@@ -29,9 +29,14 @@ export class SongService {
       const tempDiv = document.createElement('div');
       tempDiv.innerHTML = formattedSong;
       const chordElements = tempDiv.getElementsByClassName('chord');
-      while (chordElements.length > 0) {
-        chordElements[0].remove();
-      }
+      Array.from(chordElements).forEach((chord: Element) => {
+        const chordElement = chord as HTMLElement;
+        chordElement.style.visibility = 'hidden';
+        chordElement.style.height = '0';
+        chordElement.style.width = '0';
+        chordElement.style.position = 'absolute';
+        chordElement.style.pointerEvents = 'none';
+      });
       return `<div class="songContent" data-mode="text">${tempDiv.innerHTML}</div>`;
     }
 
@@ -44,6 +49,13 @@ export class SongService {
         font-family: monospace;
         font-size: 14px;
         line-height: 1.5;
+      }
+      .songContent[data-mode="text"] .chord {
+        visibility: hidden;
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
       }
       .songContent[data-mode="html"] {
         font-family: inherit;
@@ -69,6 +81,7 @@ export class SongService {
       .songContent .row {
         display: flex;
         line-height: 150%;
+        min-height: 1.5em;
       }
     `;
     return `<style>${baseStyles}</style><div class="songContent" data-mode="html">${formattedSong}</div>`;
