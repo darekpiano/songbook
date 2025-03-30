@@ -1,17 +1,21 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { Layout } from './components/layout/Layout'
+import { SongList } from './components/songs/SongList'
 import './App.css'
 
 // Placeholder components - will be implemented later
-const SongList = () => <div>Song List</div>
 const SongView = () => <div>Song View</div>
 
 function App() {
   return (
     <Router basename="/songbook">
-      <Routes>
-        <Route path="/" element={<SongList />} />
-        <Route path="/song/:id" element={<SongView />} />
-      </Routes>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<SongList />} />
+          <Route path="/songs/:id" element={<div>Song details coming soon...</div>} />
+          <Route path="/song/:id" element={<SongView />} />
+        </Routes>
+      </Layout>
     </Router>
   )
 }

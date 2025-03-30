@@ -9,8 +9,8 @@
 - [x] Create basic styling system (CSS/SCSS modules)
 
 ## Core Components Development
-- [ ] Create main layout component
-- [ ] Implement header with navigation
+- [x] Create main layout component
+- [x] Implement header with navigation
 - [ ] Create song list component
 - [ ] Develop song view component
 - [ ] Implement control buttons component
