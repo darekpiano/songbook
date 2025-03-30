@@ -1,12 +1,12 @@
-import { ChordProParser, Song, HtmlTableFormatter, Metadata } from 'chordsheetjs';
+import { ChordProParser, Song, HtmlDivFormatter, Metadata } from 'chordsheetjs';
 
 export class SongService {
   private parser: ChordProParser;
-  private htmlFormatter: HtmlTableFormatter;
+  private htmlFormatter: HtmlDivFormatter;
 
   constructor() {
     this.parser = new ChordProParser();
-    this.htmlFormatter = new HtmlTableFormatter();
+    this.htmlFormatter = new HtmlDivFormatter();
   }
 
   async loadSong(filename: string): Promise<Song | null> {
@@ -24,13 +24,31 @@ export class SongService {
 
   formatSong(song: Song, showChords: boolean = true): string {
     const formattedSong = this.htmlFormatter.format(song);
-    const baseStyles = this.htmlFormatter.cssString('.songContent');
+    const baseStyles = `
+      .songContent {
+        white-space: pre-wrap;
+      }
+      .songContent .chord {
+        color: var(--primary-color);
+        font-weight: 600;
+        font-family: monospace;
+        padding: 0 0.2em;
+      }
+      .songContent .row {
+        padding: 0.2em 0;
+        min-height: 2.2em;
+      }
+      .songContent .paragraph {
+        margin-bottom: 1.5em;
+      }
+    `;
     const hideStyles = !showChords ? `
       .songContent .chord {
         display: none !important;
       }
-      .songContent tr.chords {
-        display: none !important;
+      .songContent .row {
+        min-height: 1.6em !important;
+        padding: 0 !important;
       }
     ` : '';
     return `<style>${baseStyles}${hideStyles}</style>${formattedSong}`;
