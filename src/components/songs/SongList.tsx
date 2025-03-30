@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react';
-import { songs, SongMetadata } from '../../data/songs';
+import { songs } from '../../data/songs';
 import { Link } from 'react-router-dom';
 
 type SortField = 'title' | 'artist' | 'year' | 'key';
