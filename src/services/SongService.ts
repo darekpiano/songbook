@@ -1,14 +1,12 @@
-import { ChordProParser, Song, HtmlDivFormatter, TextFormatter, Metadata } from 'chordsheetjs';
+import { ChordProParser, Song, HtmlDivFormatter, Metadata } from 'chordsheetjs';
 
 export class SongService {
   private parser: ChordProParser;
   private htmlFormatter: HtmlDivFormatter;
-  private textFormatter: TextFormatter;
 
   constructor() {
     this.parser = new ChordProParser();
     this.htmlFormatter = new HtmlDivFormatter();
-    this.textFormatter = new TextFormatter();
   }
 
   async loadSong(filename: string): Promise<Song | null> {
@@ -25,12 +23,18 @@ export class SongService {
   }
 
   formatSong(song: Song, showChords: boolean = true): string {
+    const formattedSong = this.htmlFormatter.format(song);
+    
     if (!showChords) {
-      const formattedText = this.textFormatter.format(song);
-      return `<pre class="songContent" data-mode="text">${this.escapeHtml(formattedText)}</pre>`;
+      const tempDiv = document.createElement('div');
+      tempDiv.innerHTML = formattedSong;
+      const chordElements = tempDiv.getElementsByClassName('chord');
+      while (chordElements.length > 0) {
+        chordElements[0].remove();
+      }
+      return `<div class="songContent" data-mode="text">${tempDiv.innerHTML}</div>`;
     }
 
-    const formattedSong = this.htmlFormatter.format(song);
     const baseStyles = `
       .songContent {
         white-space: pre;
@@ -68,12 +72,6 @@ export class SongService {
       }
     `;
     return `<style>${baseStyles}</style><div class="songContent" data-mode="html">${formattedSong}</div>`;
-  }
-
-  private escapeHtml(text: string): string {
-    const div = document.createElement('div');
-    div.textContent = text;
-    return div.innerHTML;
   }
 
   transposeUp(song: Song): Song {
