@@ -25,16 +25,22 @@ export class SongService {
 
   formatSong(song: Song, showChords: boolean = true): string {
     if (showChords) {
-      return this.htmlFormatter.format(song);
+      const formattedSong = this.htmlFormatter.format(song);
+      const baseStyles = this.htmlFormatter.cssString('.songContent');
+      return `<style>${baseStyles}</style>${formattedSong}`;
     }
     return this.textFormatter.format(song);
   }
 
   transposeUp(song: Song): Song {
-    return song.transposeUp();
+    return song.transpose(1);
   }
 
   transposeDown(song: Song): Song {
-    return song.transposeDown();
+    return song.transpose(-1);
+  }
+
+  getDefaultStyles(): string {
+    return this.htmlFormatter.cssString('.songContent');
   }
 } 

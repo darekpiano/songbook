@@ -2,32 +2,69 @@
 
 .songContent {
   text-align: left;
-
+  font-size: 1.1em;
+  line-height: 1.6;
+  
   :global(.chord) {
     color: $primary-color;
     font-weight: 600;
     font-family: $font-family-mono;
     font-size: 0.9em;
-    padding: 0 $spacing-sm;
+    padding: 0 $spacing-xs;
     display: inline-block;
   }
 
   :global(.paragraph) {
-    margin-bottom: $spacing-lg;
+    margin-bottom: $spacing-xl;
   }
 
   :global(.row) {
-    line-height: 1.6;
     margin: 0;
-    display: block;
+    padding: $spacing-xs 0;
+    min-height: 2.4em;
   }
 
   :global(.line) {
-    display: block;
     margin: 0;
+    padding: 0;
+    position: relative;
   }
 
   :global(.lyrics) {
     display: inline;
+  }
+}
+
+.songHeader {
+  margin-bottom: $spacing-xl;
+  
+  h1 {
+    font-size: 2em;
+    margin-bottom: $spacing-sm;
+  }
+  
+  .metadata {
+    color: $secondary-color;
+    font-size: 0.9em;
+  }
+}
+
+.controls {
+  margin: $spacing-md 0;
+  display: flex;
+  gap: $spacing-md;
+  align-items: center;
+  
+  button {
+    padding: $spacing-sm $spacing-md;
+    border: 1px solid $border-color;
+    border-radius: $border-radius;
+    background: white;
+    cursor: pointer;
+    transition: $transition-base;
+    
+    &:hover {
+      background: $background-color;
+    }
   }
 } 
