@@ -47,17 +47,8 @@ export const SongDetail = () => {
 
   useEffect(() => {
     if (song) {
-      let transposedSong = song;
-      const steps = Math.abs(transpose);
-      
-      for (let i = 0; i < steps; i++) {
-        if (transpose > 0) {
-          transposedSong = songService.transposeUp(transposedSong);
-        } else if (transpose < 0) {
-          transposedSong = songService.transposeDown(transposedSong);
-        }
-      }
-      
+      let transposedSong = song.clone();
+      transposedSong = transposedSong.transpose(transpose);
       setSongContent(songService.formatSong(transposedSong, showChords));
     }
   }, [song, showChords, transpose]);
@@ -91,22 +82,27 @@ export const SongDetail = () => {
     );
   }
 
-  const handleTranspose = (semitones: number) => {
-    setTranspose(prev => prev + semitones);
-  };
-
   return (
     <div className="max-w-4xl mx-auto p-4">
-      <div className="mb-6">
-        <h1 className="text-3xl font-bold mb-2">{songMetadata.title}</h1>
-        <div className="text-gray-600 space-y-1">
-          <p className="text-sm">Artysta: <span className="font-medium">{songMetadata.artist}</span></p>
-          <p className="text-sm">Rok: <span className="font-medium">{songMetadata.year}</span></p>
-          <p className="text-sm">Tonacja: <span className="font-medium">{songMetadata.key}</span></p>
+      <div className={styles.songHeader}>
+        <h1>{songMetadata.title}</h1>
+        <div className={styles.metadata}>
+          <p>Artysta: <span>{songMetadata.artist}</span></p>
+          <p>Rok: <span>{songMetadata.year}</span></p>
+          <p>Tonacja: <span>{songMetadata.key}</span></p>
+          {song && song.metadata.capo && (
+            <p>Kapodaster: <span>{song.metadata.capo}</span></p>
+          )}
+          {song && song.metadata.tempo && (
+            <p>Tempo: <span>{song.metadata.tempo}</span></p>
+          )}
+          {songMetadata.tags && songMetadata.tags.length > 0 && (
+            <p>Tagi: <span>{songMetadata.tags.join(', ')}</span></p>
+          )}
         </div>
       </div>
 
-      <div className="mb-6 flex flex-wrap gap-2">
+      <div className={styles.controls}>
         <button
           onClick={() => setShowChords(!showChords)}
           className="inline-flex items-center px-3 py-1.5 text-sm font-medium rounded-full bg-blue-100 text-blue-800 hover:bg-blue-200 transition-colors"
@@ -115,14 +111,14 @@ export const SongDetail = () => {
         </button>
         <div className="flex items-center gap-1 bg-gray-100 rounded-full p-1">
           <button
-            onClick={() => handleTranspose(-1)}
+            onClick={() => setTranspose(prev => prev - 1)}
             className="w-7 h-7 flex items-center justify-center rounded-full bg-white text-gray-700 hover:bg-gray-50 transition-colors"
           >
             -
           </button>
           <span className="px-2 text-sm font-medium">{transpose}</span>
           <button
-            onClick={() => handleTranspose(1)}
+            onClick={() => setTranspose(prev => prev + 1)}
             className="w-7 h-7 flex items-center justify-center rounded-full bg-white text-gray-700 hover:bg-gray-50 transition-colors"
           >
             +

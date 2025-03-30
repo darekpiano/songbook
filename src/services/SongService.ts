@@ -1,4 +1,4 @@
-import { ChordProParser, Song, HtmlDivFormatter, TextFormatter } from 'chordsheetjs';
+import { ChordProParser, Song, HtmlDivFormatter, TextFormatter, Metadata } from 'chordsheetjs';
 
 export class SongService {
   private parser: ChordProParser;
@@ -16,7 +16,8 @@ export class SongService {
       const baseUrl = import.meta.env.BASE_URL;
       const response = await fetch(`${baseUrl}data/songs/${filename}`);
       const text = await response.text();
-      return this.parser.parse(text);
+      const song = this.parser.parse(text);
+      return song;
     } catch (error) {
       console.error('Error loading song:', error);
       return null;
@@ -38,6 +39,10 @@ export class SongService {
 
   transposeDown(song: Song): Song {
     return song.transpose(-1);
+  }
+
+  getMetadata(song: Song): Metadata {
+    return song.metadata.clone();
   }
 
   getDefaultStyles(): string {
