@@ -1,13 +1,13 @@
-import { ChordProParser, Song, HtmlDivFormatter, TextFormatter, Metadata } from 'chordsheetjs';
+import { ChordProParser, Song, HtmlTableFormatter, TextFormatter, Metadata } from 'chordsheetjs';
 
 export class SongService {
   private parser: ChordProParser;
-  private htmlFormatter: HtmlDivFormatter;
+  private htmlFormatter: HtmlTableFormatter;
   private textFormatter: TextFormatter;
 
   constructor() {
     this.parser = new ChordProParser();
-    this.htmlFormatter = new HtmlDivFormatter();
+    this.htmlFormatter = new HtmlTableFormatter();
     this.textFormatter = new TextFormatter();
   }
 
@@ -25,12 +25,17 @@ export class SongService {
   }
 
   formatSong(song: Song, showChords: boolean = true): string {
-    if (showChords) {
-      const formattedSong = this.htmlFormatter.format(song);
-      const baseStyles = this.htmlFormatter.cssString('.songContent');
-      return `<style>${baseStyles}</style>${formattedSong}`;
-    }
-    return this.textFormatter.format(song);
+    const formattedSong = this.htmlFormatter.format(song);
+    const baseStyles = this.htmlFormatter.cssString('.songContent');
+    const hideStyles = !showChords ? `
+      .songContent .chord {
+        display: none !important;
+      }
+      .songContent tr.chords {
+        display: none !important;
+      }
+    ` : '';
+    return `<style>${baseStyles}${hideStyles}</style>${formattedSong}`;
   }
 
   transposeUp(song: Song): Song {

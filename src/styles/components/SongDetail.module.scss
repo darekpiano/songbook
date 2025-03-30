@@ -5,33 +5,38 @@
   font-size: 1.1em;
   line-height: 1.6;
   
-  :global(.chord) {
+  :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  :global(td) {
+    padding: $spacing-xs 0;
+    vertical-align: bottom;
+  }
+
+  :global(tr.chords td) {
     color: $primary-color;
     font-weight: 600;
     font-family: $font-family-mono;
     font-size: 0.9em;
-    padding: 0 $spacing-xs;
-    display: inline-block;
+    padding-bottom: 0;
+  }
+
+  :global(tr.lyrics td) {
+    padding-top: 0;
   }
 
   :global(.paragraph) {
     margin-bottom: $spacing-xl;
   }
 
-  :global(.row) {
-    margin: 0;
-    padding: $spacing-xs 0;
-    min-height: 2.4em;
-  }
-
-  :global(.line) {
-    margin: 0;
-    padding: 0;
-    position: relative;
-  }
-
-  :global(.lyrics) {
-    display: inline;
+  :global(.chord) {
+    color: $primary-color;
+    font-weight: 600;
+    font-family: $font-family-mono;
+    font-size: 0.9em;
+    padding: 0 $spacing-xs;
   }
 }
 
