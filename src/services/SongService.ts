@@ -13,7 +13,8 @@ export class SongService {
 
   async loadSong(filename: string): Promise<Song | null> {
     try {
-      const response = await fetch(`/data/songs/${filename}`);
+      const baseUrl = import.meta.env.BASE_URL;
+      const response = await fetch(`${baseUrl}data/songs/${filename}`);
       const text = await response.text();
       return this.parser.parse(text);
     } catch (error) {
