@@ -5,57 +5,49 @@
   font-size: 1.1em;
   line-height: 1.6;
   white-space: pre;
+  width: 100%;
+  overflow: auto;
   
-  :global(table) {
-    border-collapse: collapse;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-  }
-
-  :global(tr) {
-    margin: 0;
-    padding: 0;
-  }
-
-  :global(td) {
-    margin: 0;
-    padding: 0;
-    vertical-align: top;
-  }
-
-  :global(.chord) {
-    color: $primary-color;
-    font-weight: 600;
+  :global([data-mode="text"]) {
     font-family: $font-family-mono;
-    font-size: 0.9em;
+    font-size: 14px;
+    transition: background-color 100ms ease-out;
+  }
 
-    &:not(:last-child) {
-      padding-right: 1em;
+  :global([data-mode="html"]) {
+    font-family: inherit;
+
+    .chord {
+      font-weight: 600;
+      color: $primary-color;
+      font-family: $font-family-mono;
+      font-size: 0.9em;
+
+      &:not(:last-child) {
+        padding-right: 1em;
+      }
+
+      &:after {
+        content: '\200b';
+      }
     }
 
-    &:after {
+    .lyrics:after {
       content: '\200b';
     }
-  }
 
-  :global(.lyrics) {
-    &:after {
-      content: '\200b';
+    .empty-line {
+      height: 1em;
     }
-  }
 
-  :global(.empty-line) {
-    height: 1em;
-  }
+    .paragraph {
+      margin-bottom: 1em;
+    }
 
-  :global(.paragraph) {
-    margin-bottom: 1em;
-  }
-
-  :global(.row) {
-    display: flex;
-    line-height: 150%;
+    .row {
+      display: flex;
+      line-height: 150%;
+    }
   }
 }
 

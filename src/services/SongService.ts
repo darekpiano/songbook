@@ -27,13 +27,21 @@ export class SongService {
   formatSong(song: Song, showChords: boolean = true): string {
     if (!showChords) {
       const formattedText = this.textFormatter.format(song);
-      return `<div class="songContent"><pre>${formattedText}</pre></div>`;
+      return `<div class="songContent" data-mode="text">${formattedText}</div>`;
     }
 
     const formattedSong = this.htmlFormatter.format(song);
     const baseStyles = `
       .songContent {
         white-space: pre;
+        width: 100%;
+      }
+      .songContent[data-mode="text"] {
+        font-family: monospace;
+        font-size: 14px;
+      }
+      .songContent[data-mode="html"] {
+        font-family: inherit;
       }
       .songContent .chord {
         font-weight: 600;
@@ -58,7 +66,7 @@ export class SongService {
         line-height: 150%;
       }
     `;
-    return `<style>${baseStyles}</style>${formattedSong}`;
+    return `<style>${baseStyles}</style><div class="songContent" data-mode="html">${formattedSong}</div>`;
   }
 
   transposeUp(song: Song): Song {
