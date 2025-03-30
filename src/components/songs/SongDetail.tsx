@@ -30,11 +30,16 @@ export const SongDetail = () => {
   useEffect(() => {
     if (song) {
       let transposedSong = song;
-      if (transpose > 0) {
-        transposedSong = songService.transposeUp(song, transpose);
-      } else if (transpose < 0) {
-        transposedSong = songService.transposeDown(song, -transpose);
+      const steps = Math.abs(transpose);
+      
+      for (let i = 0; i < steps; i++) {
+        if (transpose > 0) {
+          transposedSong = songService.transposeUp(transposedSong);
+        } else if (transpose < 0) {
+          transposedSong = songService.transposeDown(transposedSong);
+        }
       }
+      
       setSongContent(songService.formatSong(transposedSong, showChords));
     }
   }, [song, showChords, transpose]);
