@@ -7,8 +7,6 @@
   white-space: pre;
   width: 100%;
   overflow: auto;
-  margin: 0;
-  padding: 0;
   
   &[data-mode="text"] {
     font-family: $font-family-mono;
@@ -18,10 +16,18 @@
     border: none;
     display: block;
     width: 100%;
+    max-width: 800px;
+
+    .lyrics {
+      display: block;
+      width: 100%;
+      padding-right: 2em;
+    }
   }
 
   &[data-mode="html"] {
     font-family: inherit;
+    max-width: 800px;
 
     .chord {
       font-weight: 600;
@@ -38,8 +44,14 @@
       }
     }
 
-    .lyrics:after {
-      content: '\200b';
+    .lyrics {
+      display: block;
+      width: 100%;
+      padding-right: 2em;
+
+      &:after {
+        content: '\200b';
+      }
     }
 
     .empty-line {
@@ -48,17 +60,21 @@
 
     .paragraph {
       margin-bottom: 1em;
+      width: 100%;
     }
 
     .row {
-      display: flex;
+      display: block;
+      width: 100%;
       line-height: 150%;
+      min-height: 1.5em;
     }
   }
 }
 
 .songHeader {
   margin-bottom: $spacing-xl;
+  max-width: 800px;
   
   h1 {
     font-size: 2em;

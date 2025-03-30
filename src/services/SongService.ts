@@ -73,13 +73,20 @@ export class SongService {
       }
       .songContent .paragraph {
         margin-bottom: 1em;
+        width: 100%;
+      }
+      .songContent .lyrics {
+        display: block;
+        width: 100%;
+        padding-right: 2em;
       }
       .songContent .chord:after,
       .songContent .lyrics:after {
         content: '\\200b';
       }
       .songContent .row {
-        display: flex;
+        display: block;
+        width: 100%;
         line-height: 150%;
         min-height: 1.5em;
       }
