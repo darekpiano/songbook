@@ -1,0 +1,33 @@
+@use '../variables' as *;
+
+.songContent {
+  text-align: left;
+
+  :global(.chord) {
+    color: $primary-color;
+    font-weight: 600;
+    font-family: $font-family-mono;
+    font-size: 0.9em;
+    padding: 0 $spacing-sm;
+    display: inline-block;
+  }
+
+  :global(.paragraph) {
+    margin-bottom: $spacing-lg;
+  }
+
+  :global(.row) {
+    line-height: 1.6;
+    margin: 0;
+    display: block;
+  }
+
+  :global(.line) {
+    display: block;
+    margin: 0;
+  }
+
+  :global(.lyrics) {
+    display: inline;
+  }
+} 

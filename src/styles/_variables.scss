@@ -1,12 +1,13 @@
 // Colors
-$primary-color: #2c3e50;
-$secondary-color: #3498db;
-$background-color: #f8f9fa;
-$text-color: #333;
+$primary-color: #2563eb;
+$secondary-color: #64748b;
+$background-color: #f8fafc;
+$text-color: #1e293b;
 $border-color: #ddd;
 
 // Typography
-$font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+$font-family-base: system-ui, -apple-system, sans-serif;
+$font-family-mono: ui-monospace, monospace;
 $font-size-base: 16px;
 $line-height-base: 1.5;
 
@@ -17,12 +18,12 @@ $breakpoint-lg: 992px;
 $breakpoint-xl: 1200px;
 
 // Spacing
-$spacing-unit: 8px;
-$spacing-xs: $spacing-unit;
-$spacing-sm: $spacing-unit * 2;
-$spacing-md: $spacing-unit * 3;
-$spacing-lg: $spacing-unit * 4;
-$spacing-xl: $spacing-unit * 5;
+$spacing-base: 1rem;
+$spacing-xs: $spacing-base;
+$spacing-sm: $spacing-base * 0.5;
+$spacing-md: $spacing-base;
+$spacing-lg: $spacing-base * 1.5;
+$spacing-xl: $spacing-base * 2;
 
 // Border radius
 $border-radius: 4px;
