@@ -4,35 +4,58 @@
   text-align: left;
   font-size: 1.1em;
   line-height: 1.6;
-  white-space: pre-wrap;
+  white-space: pre;
   
+  :global(table) {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  :global(tr) {
+    margin: 0;
+    padding: 0;
+  }
+
+  :global(td) {
+    margin: 0;
+    padding: 0;
+    vertical-align: top;
+  }
+
   :global(.chord) {
     color: $primary-color;
     font-weight: 600;
     font-family: $font-family-mono;
     font-size: 0.9em;
-    padding: 0 0.2em;
-    display: inline-block;
-  }
 
-  :global(.paragraph) {
-    margin-bottom: $spacing-lg;
-  }
+    &:not(:last-child) {
+      padding-right: 1em;
+    }
 
-  :global(.row) {
-    margin: 0;
-    padding: 0.2em 0;
-    min-height: 2.2em;
-  }
-
-  :global(.line) {
-    margin: 0;
-    padding: 0;
+    &:after {
+      content: '\200b';
+    }
   }
 
   :global(.lyrics) {
-    display: inline;
-    position: relative;
+    &:after {
+      content: '\200b';
+    }
+  }
+
+  :global(.empty-line) {
+    height: 1em;
+  }
+
+  :global(.paragraph) {
+    margin-bottom: 1em;
+  }
+
+  :global(.row) {
+    display: flex;
+    line-height: 150%;
   }
 }
 

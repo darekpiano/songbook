@@ -1,0 +1,62 @@
+@use 'sass:math'
+@use "variables"
+
+.RadioGroup
+  $radio-border-size: 1px
+  $radio-size: 14px
+  $radio-bullet-size: 8px
+  $radio-right-margin: variables.$spacing-s
+  $radio-group-padding: variables.$spacing-m
+  $radio-background: variables.$theme-foreground
+  $radio-outline: variables.$theme-secondary
+  $radio-foreground: variables.$theme-secondary
+  $radio-group-height: 31px
+  $radio-option-space-between: variables.$spacing-l
+
+  list-style: none
+  margin: 0
+  padding: $radio-group-padding 0
+
+  &__option
+    display: inline-block
+    font-size: 0
+
+  &__option + &__option
+    margin-left: $radio-option-space-between
+
+  &__radio
+    margin: 0
+    opacity: 0
+    width: 0
+
+  &__label
+    cursor: pointer
+    font-size: initial
+    line-height: $radio-group-height
+    padding-left: ($radio-size + $radio-right-margin) + 2 * $radio-border-size
+    position: relative
+
+    &:before,
+    &:after
+      border-radius: 50%
+      position: absolute
+      transform: translate(0, -50%)
+      top: 50%
+
+    &:before
+      background-color: $radio-background
+      content: ''
+      height: $radio-size
+      left: 0
+      width: $radio-size
+
+  &__radio:focus ~ &__label:before
+    border-color: $radio-outline
+    box-shadow: 0 0 3px 3px $radio-outline
+
+  &__radio:checked ~ &__label:after
+    background-color: $radio-foreground
+    content: ''
+    height: $radio-bullet-size
+    left: math.div($radio-size - $radio-bullet-size, 2)
+    width: $radio-bullet-size

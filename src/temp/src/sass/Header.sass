@@ -1,0 +1,47 @@
+@use "variables"
+
+.Header
+  $header-foreground: variables.$theme-foreground
+  $header-meta-separator-color: variables.$theme-foreground
+  $navigation-spacing: variables.$spacing-l
+  $site-name-foreground: variables.$theme-primary
+  $site-name-font: variables.$font-monospace
+  $wrapper-spacing: variables.$spacing-m variables.$spacing-s
+
+  color: $header-foreground
+  flex: 0 0 50px
+
+  &__wrapper
+    display: flex
+    gap: variables.$column-space-between
+    flex-wrap: wrap
+    padding: $wrapper-spacing
+
+    & > *
+      flex: 1 1 calc(50% - (variables.$column-space-between / 2))
+
+  &__site-name
+    display: inline-block
+    font-family: $site-name-font
+    margin: 0
+
+    a,
+    a:hover
+      color: $site-name-foreground
+      text-decoration: none
+
+  &__navigation
+    display: flex
+    flex-wrap: wrap
+    list-style: none
+    margin: 0
+    padding: 0
+
+    li
+      display: inline-block
+      margin-top: $navigation-spacing
+
+      & + *
+        border-left: 1px $header-meta-separator-color solid
+        margin-left: $navigation-spacing
+        padding-left: $navigation-spacing
