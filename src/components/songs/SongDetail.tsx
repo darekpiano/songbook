@@ -105,21 +105,21 @@ export const SongDetail = () => {
       <div className={styles.controls}>
         <button
           onClick={() => setShowChords(!showChords)}
-          className="inline-flex items-center px-3 py-1.5 text-sm font-medium rounded-full bg-blue-100 text-blue-800 hover:bg-blue-200 transition-colors"
+          className={`${styles.button} ${styles.primary}`}
         >
           {showChords ? 'Ukryj akordy' : 'Pokaż akordy'}
         </button>
-        <div className="flex items-center gap-1 bg-gray-100 rounded-full p-1">
+        <div className={styles.transposeControls}>
           <button
             onClick={() => setTranspose(prev => prev - 1)}
-            className="w-7 h-7 flex items-center justify-center rounded-full bg-white text-gray-700 hover:bg-gray-50 transition-colors"
+            className={styles.transposeButton}
           >
             -
           </button>
-          <span className="px-2 text-sm font-medium">{transpose}</span>
+          <span className={styles.transposeValue}>{transpose}</span>
           <button
             onClick={() => setTranspose(prev => prev + 1)}
-            className="w-7 h-7 flex items-center justify-center rounded-full bg-white text-gray-700 hover:bg-gray-50 transition-colors"
+            className={styles.transposeButton}
           >
             +
           </button>

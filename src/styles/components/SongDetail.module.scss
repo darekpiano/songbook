@@ -54,17 +54,67 @@
   display: flex;
   gap: $spacing-md;
   align-items: center;
+}
+
+.button {
+  padding: $spacing-sm $spacing-md;
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+  background: white;
+  cursor: pointer;
+  transition: $transition-base;
+  font-size: 0.9em;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
   
-  button {
-    padding: $spacing-sm $spacing-md;
-    border: 1px solid $border-color;
-    border-radius: $border-radius;
-    background: white;
-    cursor: pointer;
-    transition: $transition-base;
-    
+  &:hover {
+    background: $background-color;
+  }
+
+  &.primary {
+    background: $primary-color;
+    color: white;
+    border-color: $primary-color;
+
     &:hover {
-      background: $background-color;
+      background: darken($primary-color, 5%);
     }
   }
+}
+
+.transposeControls {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  background: $background-color;
+  padding: $spacing-xs;
+  border-radius: $border-radius;
+}
+
+.transposeButton {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: white;
+  border: 1px solid $border-color;
+  cursor: pointer;
+  transition: $transition-base;
+  font-weight: 500;
+  
+  &:hover {
+    background: $background-color;
+    border-color: $primary-color;
+    color: $primary-color;
+  }
+}
+
+.transposeValue {
+  min-width: 24px;
+  text-align: center;
+  font-weight: 500;
+  font-size: 0.9em;
 } 
