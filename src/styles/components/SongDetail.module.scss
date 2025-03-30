@@ -7,14 +7,20 @@
   white-space: pre;
   width: 100%;
   overflow: auto;
+  margin: 0;
+  padding: 0;
   
-  :global([data-mode="text"]) {
+  &[data-mode="text"] {
     font-family: $font-family-mono;
     font-size: 14px;
-    transition: background-color 100ms ease-out;
+    line-height: 1.5;
+    background: none;
+    border: none;
+    display: block;
+    width: 100%;
   }
 
-  :global([data-mode="html"]) {
+  &[data-mode="html"] {
     font-family: inherit;
 
     .chord {
