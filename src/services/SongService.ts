@@ -3,46 +3,38 @@ import { getSongById, SongMetadata } from '../data/songs';
 
 export class SongService {
   private parser: ChordProParser;
-  private formatter: HtmlDivFormatter;
+  private htmlFormatter: HtmlDivFormatter;
   private textFormatter: TextFormatter;
 
   constructor() {
     this.parser = new ChordProParser();
-    this.formatter = new HtmlDivFormatter();
+    this.htmlFormatter = new HtmlDivFormatter();
     this.textFormatter = new TextFormatter();
   }
 
-  async loadSong(id: string): Promise<{ metadata: SongMetadata; song: Song } | null> {
-    const metadata = getSongById(id);
-    if (!metadata) return null;
-
+  async loadSong(filename: string): Promise<Song | null> {
     try {
-      const response = await fetch(`/songbook/data/songs/${metadata.filename}`);
-      const chordSheet = await response.text();
-      const song = this.parser.parse(chordSheet);
-      return { metadata, song };
+      const response = await fetch(`/data/songs/${filename}`);
+      const text = await response.text();
+      return this.parser.parse(text);
     } catch (error) {
-      console.error(`Error loading song ${id}:`, error);
+      console.error('Error loading song:', error);
       return null;
     }
   }
 
   formatSong(song: Song, showChords: boolean = true): string {
-    if (!showChords) {
-      return this.textFormatter.format(song);
+    if (showChords) {
+      return this.htmlFormatter.format(song);
     }
-    return this.formatter.format(song);
+    return this.textFormatter.format(song);
   }
 
-  transposeUp(song: Song): Song {
-    return song.transpose(1);
-  }
-
-  transposeDown(song: Song): Song {
-    return song.transpose(-1);
-  }
-
-  transpose(song: Song, semitones: number): Song {
+  transposeUp(song: Song, semitones: number = 1): Song {
     return song.transpose(semitones);
+  }
+
+  transposeDown(song: Song, semitones: number = 1): Song {
+    return song.transpose(-semitones);
   }
 } 
