@@ -84,7 +84,7 @@ export const SongDetail = () => {
   }
 
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className={styles.container}>
       <div className={styles.navBar}>
         <div className={styles.leftControls}>
           <div className={styles.appTitle}>
@@ -150,7 +150,7 @@ export const SongDetail = () => {
       )}
 
       <div 
-        className={`${styles.songContent} prose max-w-none bg-white rounded-lg shadow-sm p-4 leading-relaxed`}
+        className={styles.songContent}
         dangerouslySetInnerHTML={{ __html: songContent }}
       />
     </div>
