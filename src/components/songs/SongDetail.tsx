@@ -96,8 +96,10 @@ export const SongDetail = () => {
           <button
             onClick={() => setShowChords(!showChords)}
             className={`${styles.button} ${styles.primary}`}
+            title={showChords ? "Ukryj akordy" : "Pokaż akordy"}
+            aria-label={showChords ? "Ukryj akordy" : "Pokaż akordy"}
           >
-            {showChords ? 'Akordy' : 'Pokaż akordy'}
+            <span className={styles.chordIcon}>{showChords ? "♫" : "♪"}</span>
           </button>
           
           <div className={styles.transposeControls} title="Transpozycja">
