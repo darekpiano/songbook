@@ -18,7 +18,7 @@ export const Layout = ({ children }: LayoutProps) => {
             {isHomePage ? (
               'Śpiewnik'
             ) : (
-              <Link to="/">Śpiewnik</Link>
+              <Link to="/">Songbook</Link>
             )}
           </h1>
           <div className={styles.controls}>
