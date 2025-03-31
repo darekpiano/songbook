@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react';
 import { songs } from '../../data/songs';
 import { Link } from 'react-router-dom';
+import { AlphabetFilter } from './AlphabetFilter';
 
 type SortField = 'title' | 'artist' | 'year' | 'key';
 type SortOrder = 'asc' | 'desc';
@@ -8,6 +9,7 @@ type SortOrder = 'asc' | 'desc';
 export const SongList = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
+  const [selectedLetter, setSelectedLetter] = useState<string | null>(null);
   const [sortField, setSortField] = useState<SortField>('title');
   const [sortOrder, setSortOrder] = useState<SortOrder>('asc');
 
@@ -16,6 +18,14 @@ export const SongList = () => {
     songs.forEach(song => song.tags?.forEach(tag => tags.add(tag)));
     return Array.from(tags).sort();
   }, []);
+
+  const handleLetterSelect = (letter: string | null) => {
+    setSelectedLetter(letter);
+    // Resetuj wyszukiwarkę przy wyborze litery
+    if (letter) {
+      setSearchQuery('');
+    }
+  };
 
   const filteredAndSortedSongs = useMemo(() => {
     let result = [...songs];
@@ -35,17 +45,33 @@ export const SongList = () => {
       result = result.filter(song => song.tags?.includes(selectedTag));
     }
 
+    // Filter by letter
+    if (selectedLetter) {
+      if (selectedLetter === '#') {
+        // Filtruj numeryczne i specjalne znaki (nie litery)
+        result = result.filter(song => {
+          const firstChar = song.title.charAt(0).toLowerCase();
+          return !/^[a-ząćęłńóśźż]/.test(firstChar);
+        });
+      } else {
+        // Filtruj po pierwszej literze (bez uwzględniania wielkości liter)
+        result = result.filter(song => 
+          song.title.charAt(0).toLowerCase() === selectedLetter.toLowerCase()
+        );
+      }
+    }
+
     // Sort
     result.sort((a, b) => {
       const aValue = a[sortField]?.toString().toLowerCase() ?? '';
       const bValue = b[sortField]?.toString().toLowerCase() ?? '';
       return sortOrder === 'asc' 
-        ? aValue.localeCompare(bValue)
-        : bValue.localeCompare(aValue);
+        ? aValue.localeCompare(bValue, 'pl')
+        : bValue.localeCompare(aValue, 'pl');
     });
 
     return result;
-  }, [searchQuery, selectedTag, sortField, sortOrder]);
+  }, [searchQuery, selectedTag, selectedLetter, sortField, sortOrder]);
 
   const handleSort = (field: SortField) => {
     if (sortField === field) {
@@ -58,14 +84,20 @@ export const SongList = () => {
 
   return (
     <div className="p-4">
-      <div className="mb-4 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+      <div className="mb-4 flex flex-col gap-4">
         <input
           type="text"
           placeholder="Szukaj piosenki..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="w-full rounded border p-2 sm:w-64"
+          className="w-full rounded border p-2"
         />
+        
+        <AlphabetFilter 
+          selectedLetter={selectedLetter} 
+          onLetterSelect={handleLetterSelect} 
+        />
+        
         <div className="flex flex-wrap gap-2">
           {allTags.map(tag => (
             <button
@@ -114,27 +146,35 @@ export const SongList = () => {
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-200 bg-white">
-            {filteredAndSortedSongs.map(song => (
-              <tr key={song.id} className="hover:bg-gray-50">
-                <td className="whitespace-nowrap px-6 py-4">
-                  <Link
-                    to={`/songs/${song.id}`}
-                    className="text-blue-600 hover:text-blue-800"
-                  >
-                    {song.title}
-                  </Link>
-                </td>
-                <td className="whitespace-nowrap px-6 py-4 text-gray-500">
-                  {song.artist}
-                </td>
-                <td className="whitespace-nowrap px-6 py-4 text-gray-500">
-                  {song.year}
-                </td>
-                <td className="whitespace-nowrap px-6 py-4 text-gray-500">
-                  {song.key}
+            {filteredAndSortedSongs.length > 0 ? (
+              filteredAndSortedSongs.map(song => (
+                <tr key={song.id} className="hover:bg-gray-50">
+                  <td className="whitespace-nowrap px-6 py-4">
+                    <Link
+                      to={`/songs/${song.id}`}
+                      className="text-blue-600 hover:text-blue-800"
+                    >
+                      {song.title}
+                    </Link>
+                  </td>
+                  <td className="whitespace-nowrap px-6 py-4 text-gray-500">
+                    {song.artist}
+                  </td>
+                  <td className="whitespace-nowrap px-6 py-4 text-gray-500">
+                    {song.year}
+                  </td>
+                  <td className="whitespace-nowrap px-6 py-4 text-gray-500">
+                    {song.key}
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan={4} className="py-4 text-center text-gray-500">
+                  Nie znaleziono piosenek spełniających kryteria.
                 </td>
               </tr>
-            ))}
+            )}
           </tbody>
         </table>
       </div>
