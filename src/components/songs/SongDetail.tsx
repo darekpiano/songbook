@@ -4,7 +4,7 @@ import { getSongById } from '../../data/songs';
 import { SongService } from '../../services/SongService';
 import { Song } from 'chordsheetjs';
 import styles from '../../styles/components/SongDetail.module.scss';
-import { FaMusic, FaInfoCircle, FaArrowLeft, FaPlus, FaMinus, FaPrint } from 'react-icons/fa';
+import { FaMusic, FaInfoCircle, FaArrowLeft, FaPlus, FaMinus } from 'react-icons/fa';
 
 export const SongDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -54,10 +54,6 @@ export const SongDetail = () => {
       setSongContent(songService.formatSong(transposedSong, showChords));
     }
   }, [song, showChords, transpose]);
-
-  const handlePrint = () => {
-    window.print();
-  };
 
   if (!songMetadata) {
     return <div className="p-4">Nie znaleziono piosenki</div>;
@@ -132,15 +128,6 @@ export const SongDetail = () => {
             aria-label="Informacje o pieśni"
           >
             <FaInfoCircle className={styles.icon} />
-          </button>
-          
-          <button
-            onClick={handlePrint}
-            className={styles.button}
-            title="Drukuj"
-            aria-label="Drukuj"
-          >
-            <FaPrint className={styles.icon} />
           </button>
         </div>
       </div>
