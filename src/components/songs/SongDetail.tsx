@@ -4,7 +4,7 @@ import { getSongById } from '../../data/songs';
 import { SongService } from '../../services/SongService';
 import { Song } from 'chordsheetjs';
 import styles from '../../styles/components/SongDetail.module.scss';
-import { FaMusic, FaInfoCircle, FaArrowLeft, FaPlus, FaMinus } from 'react-icons/fa';
+import { FaMusic, FaInfoCircle, FaArrowLeft, FaPlus, FaMinus, FaFont } from 'react-icons/fa';
 
 export const SongDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -15,6 +15,7 @@ export const SongDetail = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [showInfo, setShowInfo] = useState(false);
+  const [fontSize, setFontSize] = useState(100); // wielkość czcionki w procentach
 
   const songMetadata = getSongById(id || '');
   const songService = new SongService();
@@ -54,6 +55,14 @@ export const SongDetail = () => {
       setSongContent(songService.formatSong(transposedSong, showChords));
     }
   }, [song, showChords, transpose]);
+
+  const decreaseFontSize = () => {
+    setFontSize(prev => Math.max(70, prev - 10));
+  };
+
+  const increaseFontSize = () => {
+    setFontSize(prev => Math.min(150, prev + 10));
+  };
 
   if (!songMetadata) {
     return <div className="p-4">Nie znaleziono piosenki</div>;
@@ -121,6 +130,23 @@ export const SongDetail = () => {
             </button>
           </div>
           
+          <div className={styles.fontSizeControls} title="Rozmiar tekstu">
+            <button
+              onClick={decreaseFontSize}
+              className={styles.fontSizeButton}
+              aria-label="Zmniejsz czcionkę"
+            >
+              <FaFont className={styles.iconSmall} />
+            </button>
+            <button
+              onClick={increaseFontSize}
+              className={styles.fontSizeButton}
+              aria-label="Zwiększ czcionkę"
+            >
+              <FaFont className={styles.iconLarge} />
+            </button>
+          </div>
+          
           <button
             onClick={() => setShowInfo(!showInfo)}
             className={styles.button}
@@ -154,6 +180,7 @@ export const SongDetail = () => {
 
       <div 
         className={styles.songContent}
+        style={{ fontSize: `${fontSize}%` }}
         dangerouslySetInnerHTML={{ __html: songContent }}
       />
     </div>
