@@ -1,0 +1,115 @@
+@use '../variables' as *;
+
+.container {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.searchInput {
+  width: 100%;
+  padding: $spacing-xs;
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+  font-size: 1rem;
+  margin: 0;
+}
+
+.tagContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-xs;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.tagButton {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  cursor: pointer;
+  background-color: #f1f1f1;
+  color: $secondary-color;
+  border: none;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    background-color: #e0e0e0;
+  }
+  
+  &.activeTag {
+    background-color: $primary-color;
+    color: white;
+  }
+}
+
+.tableContainer {
+  width: 100%;
+  overflow-x: auto;
+  margin: 0;
+  padding: 0;
+}
+
+.songTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+}
+
+.tableHeader {
+  padding: $spacing-xs;
+  text-align: left;
+  cursor: pointer;
+  background-color: #f9f9f9;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: $secondary-color;
+  border-bottom: 1px solid $border-color;
+  
+  &:hover {
+    color: $text-color;
+  }
+}
+
+.tableRow {
+  &:hover {
+    background-color: #f9f9f9;
+  }
+  
+  &:not(:last-child) {
+    border-bottom: 1px solid $border-color;
+  }
+}
+
+.tableCell {
+  padding: $spacing-xs;
+  white-space: nowrap;
+  color: $text-color;
+}
+
+.songLink {
+  color: $primary-color;
+  text-decoration: none;
+  
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.emptyMessage {
+  padding: $spacing-md;
+  text-align: center;
+  color: $secondary-color;
+} 

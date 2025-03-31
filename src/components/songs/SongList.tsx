@@ -2,6 +2,7 @@ import { useState, useMemo } from 'react';
 import { songs } from '../../data/songs';
 import { Link } from 'react-router-dom';
 import { AlphabetFilter } from './AlphabetFilter';
+import styles from '../../styles/components/SongList.module.scss';
 
 type SortField = 'title' | 'artist' | 'year' | 'key';
 type SortOrder = 'asc' | 'desc';
@@ -83,14 +84,14 @@ export const SongList = () => {
   };
 
   return (
-    <div className="p-4">
-      <div className="mb-4 flex flex-col gap-4">
+    <div className={styles.container}>
+      <div className={styles.controls}>
         <input
           type="text"
           placeholder="Szukaj piosenki..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="w-full rounded border p-2"
+          className={styles.searchInput}
         />
         
         <AlphabetFilter 
@@ -98,16 +99,12 @@ export const SongList = () => {
           onLetterSelect={handleLetterSelect} 
         />
         
-        <div className="flex flex-wrap gap-2">
+        <div className={styles.tagContainer}>
           {allTags.map(tag => (
             <button
               key={tag}
               onClick={() => setSelectedTag(selectedTag === tag ? null : tag)}
-              className={`rounded-full px-3 py-1 text-sm ${
-                selectedTag === tag
-                  ? 'bg-blue-500 text-white'
-                  : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-              }`}
+              className={`${styles.tagButton} ${selectedTag === tag ? styles.activeTag : ''}`}
             >
               {tag}
             </button>
@@ -115,62 +112,62 @@ export const SongList = () => {
         </div>
       </div>
 
-      <div className="overflow-x-auto">
-        <table className="min-w-full divide-y divide-gray-200">
-          <thead className="bg-gray-50">
+      <div className={styles.tableContainer}>
+        <table className={styles.songTable}>
+          <thead>
             <tr>
               <th
                 onClick={() => handleSort('title')}
-                className="cursor-pointer px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 hover:text-gray-700"
+                className={styles.tableHeader}
               >
                 Tytuł {sortField === 'title' && (sortOrder === 'asc' ? '↑' : '↓')}
               </th>
               <th
                 onClick={() => handleSort('artist')}
-                className="cursor-pointer px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 hover:text-gray-700"
+                className={styles.tableHeader}
               >
                 Artysta {sortField === 'artist' && (sortOrder === 'asc' ? '↑' : '↓')}
               </th>
               <th
                 onClick={() => handleSort('year')}
-                className="cursor-pointer px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 hover:text-gray-700"
+                className={styles.tableHeader}
               >
                 Rok {sortField === 'year' && (sortOrder === 'asc' ? '↑' : '↓')}
               </th>
               <th
                 onClick={() => handleSort('key')}
-                className="cursor-pointer px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 hover:text-gray-700"
+                className={styles.tableHeader}
               >
                 Tonacja {sortField === 'key' && (sortOrder === 'asc' ? '↑' : '↓')}
               </th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-gray-200 bg-white">
+          <tbody>
             {filteredAndSortedSongs.length > 0 ? (
               filteredAndSortedSongs.map(song => (
-                <tr key={song.id} className="hover:bg-gray-50">
-                  <td className="whitespace-nowrap px-6 py-4">
+                <tr key={song.id} className={styles.tableRow}>
+                  <td className={styles.tableCell}>
                     <Link
                       to={`/songs/${song.id}`}
-                      className="text-blue-600 hover:text-blue-800"
+                      className={styles.songLink}
                     >
                       {song.title}
                     </Link>
                   </td>
-                  <td className="whitespace-nowrap px-6 py-4 text-gray-500">
+                  <td className={styles.tableCell}>
                     {song.artist}
                   </td>
-                  <td className="whitespace-nowrap px-6 py-4 text-gray-500">
+                  <td className={styles.tableCell}>
                     {song.year}
                   </td>
-                  <td className="whitespace-nowrap px-6 py-4 text-gray-500">
+                  <td className={styles.tableCell}>
                     {song.key}
                   </td>
                 </tr>
               ))
             ) : (
               <tr>
-                <td colSpan={4} className="py-4 text-center text-gray-500">
+                <td colSpan={4} className={styles.emptyMessage}>
                   Nie znaleziono piosenek spełniających kryteria.
                 </td>
               </tr>
