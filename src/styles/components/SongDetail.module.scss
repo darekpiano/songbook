@@ -7,6 +7,9 @@
   white-space: pre;
   width: 100%;
   overflow: auto;
+  padding: 0;
+  margin: 0;
+  max-width: 800px;
   
   &[data-mode="text"] {
     font-family: $font-family-mono;
@@ -14,22 +17,14 @@
     line-height: 1.5;
     background: none;
     border: none;
-    display: block;
-    width: 100%;
-    max-width: 800px;
-
-    .lyrics {
-      display: block;
-      width: 100%;
-      padding-right: 2em;
-    }
+    padding: 0;
+    margin: 0;
   }
 
   &[data-mode="html"] {
     font-family: inherit;
-    max-width: 800px;
 
-    .chord {
+    :global(.chord) {
       font-weight: 600;
       color: $primary-color;
       font-family: $font-family-mono;
@@ -44,30 +39,21 @@
       }
     }
 
-    .lyrics {
-      display: block;
-      width: 100%;
-      padding-right: 2em;
-
-      &:after {
-        content: '\200b';
-      }
+    :global(.lyrics:after) {
+      content: '\200b';
     }
 
-    .empty-line {
+    :global(.empty-line) {
       height: 1em;
     }
 
-    .paragraph {
+    :global(.paragraph) {
       margin-bottom: 1em;
-      width: 100%;
     }
 
-    .row {
-      display: block;
-      width: 100%;
+    :global(.row) {
+      display: flex;
       line-height: 150%;
-      min-height: 1.5em;
     }
   }
 }
