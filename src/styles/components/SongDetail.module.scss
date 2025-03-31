@@ -40,10 +40,23 @@
 .homeLink {
   color: white;
   text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   
   &:hover {
-    text-decoration: underline;
+    text-decoration: none;
+    opacity: 0.8;
   }
+}
+
+.backArrow {
+  font-size: 1.5em;
+  font-weight: bold;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .songContent {

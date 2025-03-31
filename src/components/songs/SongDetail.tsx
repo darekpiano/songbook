@@ -88,7 +88,9 @@ export const SongDetail = () => {
       <div className={styles.navBar}>
         <div className={styles.leftControls}>
           <div className={styles.appTitle}>
-            <Link to="/" className={styles.homeLink}>Śpiewnik</Link>
+            <Link to="/" className={styles.homeLink} aria-label="Powrót">
+              <span className={styles.backArrow}>&#8592;</span>
+            </Link>
           </div>
           
           <button
