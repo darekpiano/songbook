@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Przekierowanie do aplikacji</title>
+  <script type="text/javascript">
+    // Single page apps for GitHub Pages
+    // Technique from https://github.com/rafgraph/spa-github-pages
+    
+    // This script takes the current URL and redirects to the root with the path in a query param
+    (function(l) {
+      if (l.search[1] === '/' ) {
+        var decoded = l.search.slice(1).split('&').map(function(s) { 
+          return s.replace(/~and~/g, '&')
+        }).join('?');
+        window.history.replaceState(null, null,
+            l.pathname.slice(0, -1) + decoded + l.hash
+        );
+      }
+    }(window.location))
+    
+    // If no redirect happened and we're on a 404 page, redirect to index with URL path as a param
+    if (window.location.pathname.indexOf('/songbook/') === 0) {
+      var path = window.location.pathname.replace('/songbook/', '');
+      window.location.href = window.location.origin + '/songbook/?/' + path;
+    } else {
+      window.location.href = window.location.origin + '/songbook/';
+    }
+  </script>
+</head>
+<body>
+  <div>
+    <h1>Przekierowuję...</h1>
+    <p>Jeśli nie zostałeś przekierowany automatycznie, <a href="/songbook/">kliknij tutaj</a>.</p>
+  </div>
+</body>
+</html> 

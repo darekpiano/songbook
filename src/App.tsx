@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { HashRouter as Router, Routes, Route } from 'react-router-dom'
 import { Layout } from './components/layout/Layout'
 import { SongList } from './components/songs/SongList'
 import { SongDetail } from './components/songs/SongDetail'
@@ -6,7 +6,7 @@ import './App.css'
 
 function App() {
   return (
-    <Router basename="/songbook">
+    <Router>
       <Layout>
         <Routes>
           <Route path="/" element={<SongList />} />
