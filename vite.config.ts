@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import { writeFileSync, mkdirSync, copyFileSync, readdirSync } from 'fs'
+import { writeFileSync, mkdirSync, copyFileSync, readdirSync, existsSync } from 'fs'
 import { resolve } from 'path'
 
 // https://vitejs.dev/config/
@@ -10,9 +10,15 @@ export default defineConfig({
     {
       name: 'copy-songs',
       closeBundle() {
-        // Create .nojekyll file
+        // Create .nojekyll file in root
         writeFileSync('./.nojekyll', '')
-        writeFileSync('./dist/.nojekyll', '')
+        
+        // Ensure dist directory exists and create .nojekyll in it
+        const distDir = resolve(__dirname, 'dist')
+        if (!existsSync(distDir)) {
+          mkdirSync(distDir, { recursive: true })
+        }
+        writeFileSync(resolve(distDir, '.nojekyll'), '')
 
         // Copy song files
         const songsDir = resolve(__dirname, 'src/data/songs')
