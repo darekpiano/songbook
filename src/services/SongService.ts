@@ -1,14 +1,12 @@
-import { ChordProParser, Song, HtmlDivFormatter, TextFormatter, Metadata } from 'chordsheetjs';
+import { ChordProParser, Song, HtmlDivFormatter, Metadata } from 'chordsheetjs';
 
 export class SongService {
   private parser: ChordProParser;
   private htmlFormatter: HtmlDivFormatter;
-  private textFormatter: TextFormatter;
 
   constructor() {
     this.parser = new ChordProParser();
     this.htmlFormatter = new HtmlDivFormatter();
-    this.textFormatter = new TextFormatter();
   }
 
   async loadSong(filename: string): Promise<Song | null> {
