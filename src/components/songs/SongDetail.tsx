@@ -4,6 +4,7 @@ import { getSongById } from '../../data/songs';
 import { SongService } from '../../services/SongService';
 import { Song } from 'chordsheetjs';
 import styles from '../../styles/components/SongDetail.module.scss';
+import { FaMusic, FaInfoCircle, FaArrowLeft, FaPlus, FaMinus, FaPrint } from 'react-icons/fa';
 
 export const SongDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -54,6 +55,10 @@ export const SongDetail = () => {
     }
   }, [song, showChords, transpose]);
 
+  const handlePrint = () => {
+    window.print();
+  };
+
   if (!songMetadata) {
     return <div className="p-4">Nie znaleziono piosenki</div>;
   }
@@ -89,7 +94,7 @@ export const SongDetail = () => {
         <div className={styles.leftControls}>
           <div className={styles.appTitle}>
             <Link to="/" className={styles.homeLink} aria-label="Powrót">
-              <span className={styles.backArrow}>&#8592;</span>
+              <FaArrowLeft className={styles.backArrow} />
             </Link>
           </div>
           
@@ -99,17 +104,16 @@ export const SongDetail = () => {
             title={showChords ? "Ukryj akordy" : "Pokaż akordy"}
             aria-label={showChords ? "Ukryj akordy" : "Pokaż akordy"}
           >
-            <span className={styles.chordIcon}>{showChords ? "♫" : "♪"}</span>
+            <FaMusic className={styles.icon} />
           </button>
           
           <div className={styles.transposeControls} title="Transpozycja">
-            <span className={styles.transposeLabel}>T</span>
             <button
               onClick={() => setTranspose(prev => prev - 1)}
               className={styles.transposeButton}
               aria-label="Transponuj o pół tonu w dół"
             >
-              −
+              <FaMinus className={styles.icon} />
             </button>
             <span className={styles.transposeValue}>{transpose}</span>
             <button
@@ -117,7 +121,7 @@ export const SongDetail = () => {
               className={styles.transposeButton}
               aria-label="Transponuj o pół tonu w górę"
             >
-              +
+              <FaPlus className={styles.icon} />
             </button>
           </div>
           
@@ -125,8 +129,18 @@ export const SongDetail = () => {
             onClick={() => setShowInfo(!showInfo)}
             className={styles.button}
             title="Informacje o pieśni"
+            aria-label="Informacje o pieśni"
           >
-            Info
+            <FaInfoCircle className={styles.icon} />
+          </button>
+          
+          <button
+            onClick={handlePrint}
+            className={styles.button}
+            title="Drukuj"
+            aria-label="Drukuj"
+          >
+            <FaPrint className={styles.icon} />
           </button>
         </div>
       </div>
