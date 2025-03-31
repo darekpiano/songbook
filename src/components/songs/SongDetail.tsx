@@ -8,7 +8,7 @@ import styles from '../../styles/components/SongDetail.module.scss';
 export const SongDetail = () => {
   const { id } = useParams<{ id: string }>();
   const [songContent, setSongContent] = useState<string>('');
-  const [showChords, setShowChords] = useState(true);
+  const [showChords, setShowChords] = useState(false);
   const [transpose, setTranspose] = useState(0);
   const [song, setSong] = useState<Song | null>(null);
   const [isLoading, setIsLoading] = useState(true);
