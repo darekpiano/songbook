@@ -19,7 +19,7 @@
   - [ ] Font size controls (A+/A-)
   - [x] Back to menu button
   - [ ] Settings button (for additional options)
-  - [ ] Share button
+  - [ ] Share button ?
 
 ## Song List Page
 - [x] Design and implement song list layout
