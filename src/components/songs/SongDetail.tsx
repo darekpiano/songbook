@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { getSongById } from '../../data/songs';
 import { SongService } from '../../services/SongService';
 import { Song } from 'chordsheetjs';
@@ -13,6 +13,7 @@ export const SongDetail = () => {
   const [song, setSong] = useState<Song | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [showInfo, setShowInfo] = useState(false);
 
   const songMetadata = getSongById(id || '');
   const songService = new SongService();
@@ -83,51 +84,68 @@ export const SongDetail = () => {
   }
 
   return (
-    <div className="max-w-4xl mx-auto p-4">
-      <div className={styles.songHeader}>
-        <h1>{songMetadata.title}</h1>
-        <div className={styles.metadata}>
-          <p>Artysta: <span>{songMetadata.artist}</span></p>
-          <p>Rok: <span>{songMetadata.year}</span></p>
-          <p>Tonacja: <span>{songMetadata.key}</span></p>
-          {song && song.metadata.capo && (
-            <p>Kapodaster: <span>{song.metadata.capo}</span></p>
-          )}
-          {song && song.metadata.tempo && (
-            <p>Tempo: <span>{song.metadata.tempo}</span></p>
-          )}
-          {songMetadata.tags && songMetadata.tags.length > 0 && (
-            <p>Tagi: <span>{songMetadata.tags.join(', ')}</span></p>
-          )}
+    <div className="max-w-4xl mx-auto">
+      <div className={styles.navBar}>
+        <div className={styles.appTitle}>
+          <Link to="/" className={styles.homeLink}>Śpiewnik</Link>
+        </div>
+        <div className={styles.controls}>
+          <button
+            onClick={() => setShowInfo(!showInfo)}
+            className={styles.button}
+            title="Informacje o pieśni"
+          >
+            ℹ️
+          </button>
+          
+          <button
+            onClick={() => setShowChords(!showChords)}
+            className={`${styles.button} ${styles.primary}`}
+          >
+            {showChords ? 'Ukryj akordy' : 'Pokaż akordy'}
+          </button>
+
+          <div className={styles.transposeControls}>
+            <span>Transpozycja:</span>
+            <button
+              onClick={() => setTranspose(prev => prev - 1)}
+              className={styles.transposeButton}
+            >
+              -
+            </button>
+            <span className={styles.transposeValue}>{transpose}</span>
+            <button
+              onClick={() => setTranspose(prev => prev + 1)}
+              className={styles.transposeButton}
+            >
+              +
+            </button>
+          </div>
         </div>
       </div>
 
-      <div className={styles.controls}>
-        <button
-          onClick={() => setShowChords(!showChords)}
-          className={`${styles.button} ${styles.primary}`}
-        >
-          {showChords ? 'Ukryj akordy' : 'Pokaż akordy'}
-        </button>
-        <div className={styles.transposeControls}>
-          <button
-            onClick={() => setTranspose(prev => prev - 1)}
-            className={styles.transposeButton}
-          >
-            -
-          </button>
-          <span className={styles.transposeValue}>{transpose}</span>
-          <button
-            onClick={() => setTranspose(prev => prev + 1)}
-            className={styles.transposeButton}
-          >
-            +
-          </button>
+      {showInfo && (
+        <div className={styles.songHeader}>
+          <h1>{songMetadata.title}</h1>
+          <div className={styles.metadata}>
+            <p>Artysta: <span>{songMetadata.artist}</span></p>
+            <p>Rok: <span>{songMetadata.year}</span></p>
+            <p>Tonacja: <span>{songMetadata.key}</span></p>
+            {song && song.metadata.capo && (
+              <p>Kapodaster: <span>{song.metadata.capo}</span></p>
+            )}
+            {song && song.metadata.tempo && (
+              <p>Tempo: <span>{song.metadata.tempo}</span></p>
+            )}
+            {songMetadata.tags && songMetadata.tags.length > 0 && (
+              <p>Tagi: <span>{songMetadata.tags.join(', ')}</span></p>
+            )}
+          </div>
         </div>
-      </div>
+      )}
 
       <div 
-        className={`${styles.songContent} prose max-w-none bg-white rounded-lg shadow-sm p-6 leading-relaxed`}
+        className={`${styles.songContent} prose max-w-none bg-white rounded-lg shadow-sm p-4 leading-relaxed`}
         dangerouslySetInnerHTML={{ __html: songContent }}
       />
     </div>

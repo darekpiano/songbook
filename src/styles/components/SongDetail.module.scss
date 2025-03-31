@@ -1,5 +1,32 @@
 @use '../variables' as *;
 
+.navBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $spacing-sm $spacing-md;
+  background-color: $primary-color;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.appTitle {
+  font-weight: 600;
+  font-size: 1.2em;
+}
+
+.homeLink {
+  color: white;
+  text-decoration: none;
+  
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
 .songContent {
   text-align: left;
   font-size: 1.1em;
@@ -14,13 +41,11 @@
   &[data-mode="text"] {
     font-family: $font-family-mono;
     font-size: 14px;
-    line-height: 1.5;
+    line-height: 1.6;
     background: none;
     border: none;
     padding: 0;
     margin: 0;
-    width: 70%;
-    color: $text-color;
   }
 
   &[data-mode="html"] {
@@ -61,32 +86,41 @@
 }
 
 .songHeader {
-  margin-bottom: $spacing-xl;
+  margin: $spacing-sm 0 $spacing-md;
   max-width: 800px;
+  padding: 0 $spacing-md;
   
   h1 {
-    font-size: 2em;
+    font-size: 1.8em;
     margin-bottom: $spacing-sm;
   }
   
   .metadata {
     color: $secondary-color;
     font-size: 0.9em;
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-sm $spacing-md;
+    
+    p {
+      margin: 0;
+      padding: 0;
+    }
   }
 }
 
 .controls {
-  margin: $spacing-md 0;
   display: flex;
   gap: $spacing-md;
   align-items: center;
 }
 
 .button {
-  padding: $spacing-sm $spacing-md;
-  border: 1px solid $border-color;
+  padding: $spacing-xs $spacing-sm;
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: $border-radius;
-  background: white;
+  background: transparent;
+  color: white;
   cursor: pointer;
   transition: $transition-base;
   font-size: 0.9em;
@@ -95,16 +129,16 @@
   align-items: center;
   
   &:hover {
-    background: $background-color;
+    background: rgba(255, 255, 255, 0.1);
   }
 
   &.primary {
-    background: $primary-color;
-    color: white;
-    border-color: $primary-color;
+    background: white;
+    color: $primary-color;
+    border-color: white;
 
     &:hover {
-      background: darken($primary-color, 5%);
+      background: rgba(255, 255, 255, 0.9);
     }
   }
 }
@@ -113,33 +147,35 @@
   display: flex;
   align-items: center;
   gap: $spacing-xs;
-  background: $background-color;
+  background: rgba(255, 255, 255, 0.1);
   padding: $spacing-xs;
   border-radius: $border-radius;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
 }
 
 .transposeButton {
-  width: 28px;
-  height: 28px;
+  width: 24px;
+  height: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  background: white;
-  border: 1px solid $border-color;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
   cursor: pointer;
   transition: $transition-base;
   font-weight: 500;
+  padding: 0;
   
   &:hover {
-    background: $background-color;
-    border-color: $primary-color;
-    color: $primary-color;
+    background: rgba(255, 255, 255, 0.1);
   }
 }
 
 .transposeValue {
-  min-width: 24px;
+  min-width: 20px;
   text-align: center;
   font-weight: 500;
   font-size: 0.9em;
