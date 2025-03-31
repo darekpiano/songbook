@@ -44,6 +44,15 @@ export const songs: SongMetadata[] = [
     key: 'D',
     tags: ['worship', 'praise', 'guitar'],
     filename: 'duszo-ma-pana-chwal.cho'
+  },
+  {
+    id: 'our-rescuer',
+    title: 'Our Rescuer',
+    artist: 'Rend Collective',
+    year: 2017,
+    key: 'G',
+    tags: ['worship', 'praise', 'gospel'],
+    filename: 'our-rescuer.cho'
   }
 ];
 
