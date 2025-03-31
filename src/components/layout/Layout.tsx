@@ -16,7 +16,13 @@ export const Layout = ({ children }: LayoutProps) => {
         <header className={styles.header}>
           <h1 className={styles.title}>
             {isHomePage ? (
-              'Songbook - Niech wszystko co żyje chwali Pana!'
+              <>
+                Songbook
+                <span className={styles.subtitle}>
+                  "Śpiewajcie Panu pieśń nową, śpiewajcie Panu, wszystkie krainy!"
+                  <br />Psalm 96:1
+                </span>
+              </>
             ) : (
               <Link to="/">Songbook</Link>
             )}
