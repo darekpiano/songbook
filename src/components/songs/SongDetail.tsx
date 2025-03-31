@@ -86,10 +86,32 @@ export const SongDetail = () => {
   return (
     <div className="max-w-4xl mx-auto">
       <div className={styles.navBar}>
-        <div className={styles.appTitle}>
-          <Link to="/" className={styles.homeLink}>Śpiewnik</Link>
+        <div className={styles.leftControls}>
+          <div className={styles.appTitle}>
+            <Link to="/" className={styles.homeLink}>Śpiewnik</Link>
+          </div>
+          
+          <div className={styles.transposeControls} title="Transpozycja">
+            <span className={styles.transposeLabel}>T</span>
+            <button
+              onClick={() => setTranspose(prev => prev - 1)}
+              className={styles.transposeButton}
+              aria-label="Transponuj o pół tonu w dół"
+            >
+              −
+            </button>
+            <span className={styles.transposeValue}>{transpose}</span>
+            <button
+              onClick={() => setTranspose(prev => prev + 1)}
+              className={styles.transposeButton}
+              aria-label="Transponuj o pół tonu w górę"
+            >
+              +
+            </button>
+          </div>
         </div>
-        <div className={styles.controls}>
+        
+        <div className={styles.rightControls}>
           <button
             onClick={() => setShowInfo(!showInfo)}
             className={styles.button}
@@ -104,23 +126,6 @@ export const SongDetail = () => {
           >
             {showChords ? 'Ukryj akordy' : 'Pokaż akordy'}
           </button>
-
-          <div className={styles.transposeControls}>
-            <span>Transpozycja:</span>
-            <button
-              onClick={() => setTranspose(prev => prev - 1)}
-              className={styles.transposeButton}
-            >
-              -
-            </button>
-            <span className={styles.transposeValue}>{transpose}</span>
-            <button
-              onClick={() => setTranspose(prev => prev + 1)}
-              className={styles.transposeButton}
-            >
-              +
-            </button>
-          </div>
         </div>
       </div>
 

@@ -11,11 +11,41 @@
   top: 0;
   z-index: 10;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  
+  @media (max-width: 600px) {
+    padding: $spacing-xs;
+  }
+}
+
+.leftControls {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  
+  @media (max-width: 600px) {
+    gap: $spacing-xs;
+  }
+}
+
+.rightControls {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  
+  @media (max-width: 480px) {
+    gap: $spacing-xs;
+  }
 }
 
 .appTitle {
   font-weight: 600;
   font-size: 1.2em;
+  margin-right: $spacing-md;
+  
+  @media (max-width: 480px) {
+    font-size: 1em;
+    margin-right: $spacing-xs;
+  }
 }
 
 .homeLink {
@@ -113,6 +143,12 @@
   display: flex;
   gap: $spacing-md;
   align-items: center;
+  flex-wrap: wrap;
+  
+  @media (max-width: 480px) {
+    gap: $spacing-xs;
+    justify-content: flex-end;
+  }
 }
 
 .button {
@@ -141,6 +177,11 @@
       background: rgba(255, 255, 255, 0.9);
     }
   }
+  
+  @media (max-width: 480px) {
+    padding: $spacing-xs;
+    font-size: 0.8em;
+  }
 }
 
 .transposeControls {
@@ -152,6 +193,16 @@
   border-radius: $border-radius;
   border: 1px solid rgba(255, 255, 255, 0.3);
   color: white;
+  
+  @media (max-width: 480px) {
+    gap: 2px;
+    padding: 2px 4px;
+  }
+}
+
+.transposeLabel {
+  font-weight: 500;
+  margin-right: 2px;
 }
 
 .transposeButton {
@@ -168,6 +219,8 @@
   transition: $transition-base;
   font-weight: 500;
   padding: 0;
+  min-width: unset;
+  flex-shrink: 0;
   
   &:hover {
     background: rgba(255, 255, 255, 0.1);
