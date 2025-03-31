@@ -1,4 +1,4 @@
-@import '../variables';
+@use '../variables' as *;
 
 .layout {
   min-height: 100vh;
@@ -15,15 +15,18 @@
   padding: $spacing-md;
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   position: sticky;
   top: 0;
   z-index: 100;
 }
 
-.titleContainer {
-  display: flex;
-  flex-direction: column;
+.main {
+  flex: 1;
+  padding: $spacing-md;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .title {
@@ -39,42 +42,6 @@
       text-decoration: underline;
     }
   }
-}
-
-.subtitle {
-  margin-top: $spacing-xs;
-  
-  h2 {
-    margin: 0 0 $spacing-xs 0;
-    font-size: 1.2rem;
-    font-weight: 400;
-  }
-  
-  .quote {
-    margin: 0 0 $spacing-xs 0;
-    font-style: italic;
-    font-size: 0.9rem;
-  }
-  
-  .reference {
-    margin: 0 0 $spacing-xs 0;
-    font-size: 0.8rem;
-    text-align: right;
-  }
-  
-  .author {
-    margin: $spacing-sm 0 0 0;
-    font-size: 0.8rem;
-    font-weight: 500;
-  }
-}
-
-.main {
-  flex: 1;
-  padding: $spacing-md;
-  max-width: 1200px;
-  margin: 0 auto;
-  width: 100%;
 }
 
 .controls {
