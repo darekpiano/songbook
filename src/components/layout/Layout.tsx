@@ -16,7 +16,7 @@ export const Layout = ({ children }: LayoutProps) => {
         <header className={styles.header}>
           <h1 className={styles.title}>
             {isHomePage ? (
-              'Śpiewnik'
+              'Songbook - Niech wszystko co żyje chwali Pana!'
             ) : (
               <Link to="/">Songbook</Link>
             )}
