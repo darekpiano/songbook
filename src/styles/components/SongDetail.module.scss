@@ -8,9 +8,8 @@
 
 .navBar {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: $spacing-sm $spacing-md;
+  padding: $spacing-sm $spacing-xs;
   background-color: $primary-color;
   color: white;
   position: sticky;
@@ -19,7 +18,7 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   
   @media (max-width: 600px) {
-    padding: $spacing-xs;
+    padding: $spacing-xs $spacing-xs;
     width: 100%;
   }
 }
@@ -27,31 +26,16 @@
 .leftControls {
   display: flex;
   align-items: center;
-  gap: $spacing-md;
-  
-  @media (max-width: 600px) {
-    gap: $spacing-xs;
-  }
-}
-
-.rightControls {
-  display: flex;
-  align-items: center;
-  gap: $spacing-md;
-  
-  @media (max-width: 480px) {
-    gap: $spacing-xs;
-  }
+  gap: $spacing-xs;
+  flex-wrap: wrap;
 }
 
 .appTitle {
   font-weight: 600;
   font-size: 1.2em;
-  margin-right: $spacing-md;
   
   @media (max-width: 480px) {
     font-size: 1em;
-    margin-right: $spacing-xs;
   }
 }
 
@@ -71,17 +55,13 @@
   white-space: pre;
   width: 100%;
   overflow: auto;
-  padding: $spacing-sm;
+  padding: $spacing-xs;
   margin: 0;
   max-width: 100%;
   background-color: white;
-  border-radius: $border-radius;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   
   @media (max-width: 600px) {
-    padding: $spacing-xs;
-    border-radius: 0;
-    box-shadow: none;
+    padding: $spacing-xs 0;
   }
   
   &[data-mode="text"] {
@@ -132,18 +112,18 @@
 }
 
 .songHeader {
-  margin: $spacing-sm 0 $spacing-md;
+  margin: $spacing-xs 0;
   max-width: 100%;
   padding: 0 $spacing-xs;
   
   @media (max-width: 600px) {
-    padding: 0 $spacing-xs;
+    padding: 0;
     margin: $spacing-xs 0;
   }
   
   h1 {
     font-size: 1.8em;
-    margin-bottom: $spacing-sm;
+    margin-bottom: $spacing-xs;
     
     @media (max-width: 480px) {
       font-size: 1.5em;
@@ -156,11 +136,7 @@
     font-size: 0.9em;
     display: flex;
     flex-wrap: wrap;
-    gap: $spacing-sm $spacing-md;
-    
-    @media (max-width: 480px) {
-      gap: $spacing-xs;
-    }
+    gap: $spacing-xs;
     
     p {
       margin: 0;
@@ -169,20 +145,8 @@
   }
 }
 
-.controls {
-  display: flex;
-  gap: $spacing-md;
-  align-items: center;
-  flex-wrap: wrap;
-  
-  @media (max-width: 480px) {
-    gap: $spacing-xs;
-    justify-content: flex-end;
-  }
-}
-
 .button {
-  padding: $spacing-xs $spacing-sm;
+  padding: $spacing-xs $spacing-xs;
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: $border-radius;
   background: transparent;
@@ -193,6 +157,7 @@
   font-weight: 500;
   display: inline-flex;
   align-items: center;
+  margin-left: $spacing-xs;
   
   &:hover {
     background: rgba(255, 255, 255, 0.1);
@@ -217,17 +182,13 @@
 .transposeControls {
   display: flex;
   align-items: center;
-  gap: $spacing-xs;
+  gap: 2px;
   background: rgba(255, 255, 255, 0.1);
-  padding: $spacing-xs;
+  padding: 2px 4px;
   border-radius: $border-radius;
   border: 1px solid rgba(255, 255, 255, 0.3);
   color: white;
-  
-  @media (max-width: 480px) {
-    gap: 2px;
-    padding: 2px 4px;
-  }
+  margin-left: $spacing-xs;
 }
 
 .transposeLabel {

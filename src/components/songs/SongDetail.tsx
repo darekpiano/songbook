@@ -91,6 +91,13 @@ export const SongDetail = () => {
             <Link to="/" className={styles.homeLink}>Śpiewnik</Link>
           </div>
           
+          <button
+            onClick={() => setShowChords(!showChords)}
+            className={`${styles.button} ${styles.primary}`}
+          >
+            {showChords ? 'Akordy' : 'Pokaż akordy'}
+          </button>
+          
           <div className={styles.transposeControls} title="Transpozycja">
             <span className={styles.transposeLabel}>T</span>
             <button
@@ -109,22 +116,13 @@ export const SongDetail = () => {
               +
             </button>
           </div>
-        </div>
-        
-        <div className={styles.rightControls}>
+          
           <button
             onClick={() => setShowInfo(!showInfo)}
             className={styles.button}
             title="Informacje o pieśni"
           >
-            ℹ️
-          </button>
-          
-          <button
-            onClick={() => setShowChords(!showChords)}
-            className={`${styles.button} ${styles.primary}`}
-          >
-            {showChords ? 'Ukryj akordy' : 'Pokaż akordy'}
+            Info
           </button>
         </div>
       </div>
