@@ -55,7 +55,7 @@ export class SongService {
       });
       
       const baseStyles = this.getBaseStyles();
-      return `<style>${baseStyles}</style><pre class="songContent" data-mode="text">${tempDiv.innerHTML}</pre>`;
+      return `<style>${baseStyles}</style><div class="songContent" data-mode="text">${tempDiv.innerHTML}</div>`;
     }
   }
 
@@ -66,16 +66,11 @@ export class SongService {
         width: 100%;
         font-size: 1.1em;
         line-height: 1.6;
+        font-family: inherit;
       }
       
       .songContent[data-mode="text"] {
-        font-family: monospace;
-        font-size: 14px;
-        line-height: 1.5;
-      }
-      
-      .songContent[data-mode="html"] {
-        font-family: inherit;
+        line-height: 1.6;
       }
       
       .songContent .chord {
