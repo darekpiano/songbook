@@ -25,18 +25,44 @@ export class SongService {
   }
 
   formatSong(song: Song, showChords: boolean = true): string {
-    let formattedContent: string;
-    let dataMode: string;
-
     if (showChords) {
-      formattedContent = this.htmlFormatter.format(song);
-      dataMode = "html";
+      const formattedContent = this.htmlFormatter.format(song);
+      const baseStyles = this.getBaseStyles();
+      return `<style>${baseStyles}</style><div class="songContent" data-mode="html">${formattedContent}</div>`;
     } else {
-      formattedContent = this.textFormatter.format(song);
-      dataMode = "text";
+      const formattedHtml = this.htmlFormatter.format(song);
+      const tempDiv = document.createElement('div');
+      tempDiv.innerHTML = formattedHtml;
+      
+      // Usuń wszystkie akordy
+      const chords = tempDiv.querySelectorAll('.chord');
+      chords.forEach(chord => chord.remove());
+      
+      // Usuń puste wiersze pozostałe po usunięciu akordów
+      const rows = tempDiv.querySelectorAll('.row');
+      rows.forEach(row => {
+        const hasText = Array.from(row.childNodes).some(
+          node => node.textContent && node.textContent.trim().length > 0
+        );
+        if (!hasText) {
+          row.remove();
+        }
+      });
+      
+      // Usuń zbędne elementy
+      tempDiv.querySelectorAll('.row').forEach(row => {
+        const newDiv = document.createElement('div');
+        newDiv.innerHTML = row.textContent || '';
+        row.parentNode?.replaceChild(newDiv, row);
+      });
+      
+      const baseStyles = this.getBaseStyles();
+      return `<style>${baseStyles}</style><pre class="songContent" data-mode="text">${tempDiv.innerHTML}</pre>`;
     }
+  }
 
-    const baseStyles = `
+  private getBaseStyles(): string {
+    return `
       .songContent {
         white-space: pre;
         width: 100%;
@@ -82,12 +108,6 @@ export class SongService {
         line-height: 150%;
       }
     `;
-
-    if (dataMode === 'text') {
-      return `<style>${baseStyles}</style><pre class="songContent" data-mode="${dataMode}">${formattedContent}</pre>`;
-    } else {
-      return `<style>${baseStyles}</style><div class="songContent" data-mode="${dataMode}">${formattedContent}</div>`;
-    }
   }
 
   transposeUp(song: Song): Song {
