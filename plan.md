@@ -100,3 +100,9 @@
 - [ ] Implement font size controls
 - [ ] Add chord diagrams
 - [ ] Add auto-scroll functionality 
+
+## moje doatki
+- [ ] tworzenie zestawow pod konkretne piesni
+- [ ] guzik czysc filtr, 
+- [ ] moglyb pamietac filtr jak sie cofam do wyszukiwania i pameitac TAGI
+- [ ] 

@@ -10,6 +10,14 @@ export interface SongMetadata {
 
 export const songs: SongMetadata[] = [
   {
+    id: 'gratefulness',
+    title: 'N001. "Gratefulness"',
+    artist: 'Rend Collective',
+    key: 'G',
+    tags: ['worship', 'english'],
+    filename: 'gratefulness.cho'
+  },
+  {
     id: 'moje-wedrowanie',
     title: 'Moje wędrowanie',
     artist: 'Jacek Wąsowski',
@@ -67,13 +75,13 @@ export const songs: SongMetadata[] = [
     title: 'Oceany',
     artist: 'Hillsong',
     key: 'Am',
-    tags: ['worship', 'praise'],
+    tags: ['worship', 'praise', 'dod'],
     filename: 'dod001-oceany.cho'
   },
   {
     id: 'dod002-zostawiam-to-co-za-mn',
     title: 'Zostawiam to co za mną',
-    tags: ['worship'],
+    tags: ['worship', 'dod'],
     filename: 'dod002-zostawiam-to-co-za-mn.cho'
   },
   {
@@ -511,14 +519,15 @@ export const songs: SongMetadata[] = [
   {
     id: 'ryb001-zmartwychwstae-panie',
     title: 'RYB001. Zmartwychwstałeś Panie',
-    artist: 'Autor nieznany',
-    tags: ['worship'],
+    key: 'G',
+    tags: ['worship', 'ryb'],
     filename: 'ryb001-zmartwychwstae-panie.cho'
   },
   {
     id: 'ryb002-kocham-ci',
     title: 'RYB002. Kocham Cię',
-    tags: ['worship'],
+    key: 'G',
+    tags: ['worship', 'ryb'],
     filename: 'ryb002-kocham-ci.cho'
   },
   {
@@ -1323,4 +1332,19 @@ export const getSongsByArtist = (artist: string): SongMetadata[] => {
 
 export const getSongsByKey = (key: string): SongMetadata[] => {
   return songs.filter(song => song.key === key);
-}; 
+};
+
+// Funkcja dodająca tagi 'dod' i 'ryb' dla odpowiednich pieśni
+export const updateTagsForSongs = () => {
+  songs.forEach(song => {
+    if (song.id.startsWith('dod') && !song.tags?.includes('dod')) {
+      song.tags = [...(song.tags || []), 'dod'];
+    }
+    if (song.id.startsWith('ryb') && !song.tags?.includes('ryb')) {
+      song.tags = [...(song.tags || []), 'ryb'];
+    }
+  });
+};
+
+// Wywołujemy funkcję przy importowaniu pliku
+updateTagsForSongs(); 
