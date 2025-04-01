@@ -11,7 +11,7 @@ export interface SongMetadata {
 export const songs: SongMetadata[] = [
   {
     id: 'gratefulness',
-    title: 'N001. "Gratefulness"',
+    title: 'Gratefulness',
     artist: 'Rend Collective',
     key: 'G',
     tags: ['worship', 'english'],
