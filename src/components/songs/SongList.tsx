@@ -8,26 +8,36 @@ type SortField = 'title' | 'artist' | 'year' | 'key';
 type SortOrder = 'asc' | 'desc';
 
 // Klucze dla localStorage
-const STORAGE_KEY_TAG = 'songbook_selected_tag';
+const STORAGE_KEY_TAGS = 'songbook_selected_tags';
 const STORAGE_KEY_LETTER = 'songbook_selected_letter';
 const STORAGE_KEY_SORT_FIELD = 'songbook_sort_field';
 const STORAGE_KEY_SORT_ORDER = 'songbook_sort_order';
 
 export const SongList = () => {
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedTag, setSelectedTag] = useState<string | null>(null);
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [selectedLetter, setSelectedLetter] = useState<string | null>(null);
   const [sortField, setSortField] = useState<SortField>('title');
   const [sortOrder, setSortOrder] = useState<SortOrder>('asc');
 
   // Wczytaj zapisane filtry przy pierwszym renderowaniu
   useEffect(() => {
-    const savedTag = localStorage.getItem(STORAGE_KEY_TAG);
+    const savedTagsJson = localStorage.getItem(STORAGE_KEY_TAGS);
     const savedLetter = localStorage.getItem(STORAGE_KEY_LETTER);
     const savedSortField = localStorage.getItem(STORAGE_KEY_SORT_FIELD) as SortField;
     const savedSortOrder = localStorage.getItem(STORAGE_KEY_SORT_ORDER) as SortOrder;
 
-    if (savedTag) setSelectedTag(savedTag);
+    if (savedTagsJson) {
+      try {
+        const savedTags = JSON.parse(savedTagsJson);
+        if (Array.isArray(savedTags)) {
+          setSelectedTags(savedTags);
+        }
+      } catch (e) {
+        console.error('Błąd parsowania zapisanych tagów:', e);
+      }
+    }
+    
     if (savedLetter) setSelectedLetter(savedLetter);
     if (savedSortField) setSortField(savedSortField);
     if (savedSortOrder) setSortOrder(savedSortOrder);
@@ -35,12 +45,12 @@ export const SongList = () => {
 
   // Zapisuj zmiany filtrów do localStorage
   useEffect(() => {
-    if (selectedTag) {
-      localStorage.setItem(STORAGE_KEY_TAG, selectedTag);
+    if (selectedTags.length > 0) {
+      localStorage.setItem(STORAGE_KEY_TAGS, JSON.stringify(selectedTags));
     } else {
-      localStorage.removeItem(STORAGE_KEY_TAG);
+      localStorage.removeItem(STORAGE_KEY_TAGS);
     }
-  }, [selectedTag]);
+  }, [selectedTags]);
 
   useEffect(() => {
     if (selectedLetter) {
@@ -72,8 +82,20 @@ export const SongList = () => {
     }
   };
 
+  const handleTagToggle = (tag: string) => {
+    setSelectedTags(prevTags => {
+      if (prevTags.includes(tag)) {
+        // Jeśli tag jest już wybrany, usuń go
+        return prevTags.filter(t => t !== tag);
+      } else {
+        // W przeciwnym razie dodaj go
+        return [...prevTags, tag];
+      }
+    });
+  };
+
   const handleClearFilters = () => {
-    setSelectedTag(null);
+    setSelectedTags([]);
     setSelectedLetter(null);
     setSearchQuery('');
     setSortField('title');
@@ -93,9 +115,11 @@ export const SongList = () => {
       );
     }
 
-    // Filter by tag
-    if (selectedTag) {
-      result = result.filter(song => song.tags?.includes(selectedTag));
+    // Filter by tags - pieśń musi mieć WSZYSTKIE wybrane tagi
+    if (selectedTags.length > 0) {
+      result = result.filter(song => 
+        selectedTags.every(tag => song.tags?.includes(tag))
+      );
     }
 
     // Filter by letter
@@ -124,7 +148,7 @@ export const SongList = () => {
     });
 
     return result;
-  }, [searchQuery, selectedTag, selectedLetter, sortField, sortOrder]);
+  }, [searchQuery, selectedTags, selectedLetter, sortField, sortOrder]);
 
   const handleSort = (field: SortField) => {
     if (sortField === field) {
@@ -156,8 +180,8 @@ export const SongList = () => {
           {allTags.map(tag => (
             <button
               key={tag}
-              onClick={() => setSelectedTag(selectedTag === tag ? null : tag)}
-              className={`${styles.tagButton} ${selectedTag === tag ? styles.activeTag : ''}`}
+              onClick={() => handleTagToggle(tag)}
+              className={`${styles.tagButton} ${selectedTags.includes(tag) ? styles.activeTag : ''}`}
             >
               {tag}
             </button>
@@ -166,11 +190,28 @@ export const SongList = () => {
       </div>
 
       {/* Wskaźnik aktywnych filtrów */}
-      {(selectedTag || selectedLetter) && (
+      {(selectedTags.length > 0 || selectedLetter) && (
         <div className={styles.activeFilters}>
           <span>Aktywne filtry: </span>
-          {selectedTag && <span className={styles.filterBadge}>Tag: {selectedTag}</span>}
-          {selectedLetter && <span className={styles.filterBadge}>Litera: {selectedLetter}</span>}
+          {selectedTags.map(tag => (
+            <span 
+              key={tag} 
+              className={styles.filterBadge} 
+              onClick={() => handleTagToggle(tag)}
+              title="Kliknij, aby usunąć"
+            >
+              {tag} ✕
+            </span>
+          ))}
+          {selectedLetter && (
+            <span 
+              className={styles.filterBadge}
+              onClick={() => setSelectedLetter(null)}
+              title="Kliknij, aby usunąć"
+            >
+              Litera: {selectedLetter} ✕
+            </span>
+          )}
         </div>
       )}
 
