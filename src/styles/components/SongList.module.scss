@@ -22,6 +22,20 @@
   border-radius: $border-radius;
   font-size: 1rem;
   margin: 0;
+  background-color: #ffffff;
+  color: $text-color;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+  
+  &:focus {
+    outline: none;
+    border-color: $primary-color;
+    box-shadow: 0 0 0 3px rgba($primary-color, 0.2);
+  }
+  
+  &::placeholder {
+    color: #999;
+  }
 }
 
 .tagContainer {
