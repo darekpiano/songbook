@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { songs } from '../../data/songs';
 import { Link } from 'react-router-dom';
 import { AlphabetFilter } from './AlphabetFilter';
@@ -7,12 +7,56 @@ import styles from '../../styles/components/SongList.module.scss';
 type SortField = 'title' | 'artist' | 'year' | 'key';
 type SortOrder = 'asc' | 'desc';
 
+// Klucze dla localStorage
+const STORAGE_KEY_TAG = 'songbook_selected_tag';
+const STORAGE_KEY_LETTER = 'songbook_selected_letter';
+const STORAGE_KEY_SORT_FIELD = 'songbook_sort_field';
+const STORAGE_KEY_SORT_ORDER = 'songbook_sort_order';
+
 export const SongList = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
   const [selectedLetter, setSelectedLetter] = useState<string | null>(null);
   const [sortField, setSortField] = useState<SortField>('title');
   const [sortOrder, setSortOrder] = useState<SortOrder>('asc');
+
+  // Wczytaj zapisane filtry przy pierwszym renderowaniu
+  useEffect(() => {
+    const savedTag = localStorage.getItem(STORAGE_KEY_TAG);
+    const savedLetter = localStorage.getItem(STORAGE_KEY_LETTER);
+    const savedSortField = localStorage.getItem(STORAGE_KEY_SORT_FIELD) as SortField;
+    const savedSortOrder = localStorage.getItem(STORAGE_KEY_SORT_ORDER) as SortOrder;
+
+    if (savedTag) setSelectedTag(savedTag);
+    if (savedLetter) setSelectedLetter(savedLetter);
+    if (savedSortField) setSortField(savedSortField);
+    if (savedSortOrder) setSortOrder(savedSortOrder);
+  }, []);
+
+  // Zapisuj zmiany filtrów do localStorage
+  useEffect(() => {
+    if (selectedTag) {
+      localStorage.setItem(STORAGE_KEY_TAG, selectedTag);
+    } else {
+      localStorage.removeItem(STORAGE_KEY_TAG);
+    }
+  }, [selectedTag]);
+
+  useEffect(() => {
+    if (selectedLetter) {
+      localStorage.setItem(STORAGE_KEY_LETTER, selectedLetter);
+    } else {
+      localStorage.removeItem(STORAGE_KEY_LETTER);
+    }
+  }, [selectedLetter]);
+
+  useEffect(() => {
+    localStorage.setItem(STORAGE_KEY_SORT_FIELD, sortField);
+  }, [sortField]);
+
+  useEffect(() => {
+    localStorage.setItem(STORAGE_KEY_SORT_ORDER, sortOrder);
+  }, [sortOrder]);
 
   const allTags = useMemo(() => {
     const tags = new Set<string>();
@@ -26,6 +70,14 @@ export const SongList = () => {
     if (letter) {
       setSearchQuery('');
     }
+  };
+
+  const handleClearFilters = () => {
+    setSelectedTag(null);
+    setSelectedLetter(null);
+    setSearchQuery('');
+    setSortField('title');
+    setSortOrder('asc');
   };
 
   const filteredAndSortedSongs = useMemo(() => {
@@ -96,7 +148,8 @@ export const SongList = () => {
         
         <AlphabetFilter 
           selectedLetter={selectedLetter} 
-          onLetterSelect={handleLetterSelect} 
+          onLetterSelect={handleLetterSelect}
+          onClearFilters={handleClearFilters}
         />
         
         <div className={styles.tagContainer}>
@@ -111,6 +164,15 @@ export const SongList = () => {
           ))}
         </div>
       </div>
+
+      {/* Wskaźnik aktywnych filtrów */}
+      {(selectedTag || selectedLetter) && (
+        <div className={styles.activeFilters}>
+          <span>Aktywne filtry: </span>
+          {selectedTag && <span className={styles.filterBadge}>Tag: {selectedTag}</span>}
+          {selectedLetter && <span className={styles.filterBadge}>Litera: {selectedLetter}</span>}
+        </div>
+      )}
 
       <div className={styles.tableContainer}>
         <table className={styles.songTable}>
