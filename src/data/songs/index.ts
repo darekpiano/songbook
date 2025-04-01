@@ -124,7 +124,9 @@ export const songs: SongMetadata[] = [
   {
     id: 'dod009-ty-przynosisz-mi-zwycistwa-pie',
     title: 'Ty przynosisz mi zwycięstwa pieśń',
-    tags: ['worship'],
+    artist: 'Bethel Music',
+    key: 'F',
+    tags: ['worship', 'dod'],
     filename: 'dod009-ty-przynosisz-mi-zwycistwa-pie.cho'
   },
   {
