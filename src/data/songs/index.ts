@@ -1050,7 +1050,7 @@ export const songs: SongMetadata[] = [
   },
   {
     id: 'ryb089-oddaj-ci-ycie',
-    title: 'RYB089. Oddaj Ci życie',
+    title: 'RYB089. Oddaję Ci życie',
     filename: 'ryb089-oddaj-ci-ycie.cho'
   },
   {
