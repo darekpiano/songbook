@@ -1050,272 +1050,227 @@ export const songs: SongMetadata[] = [
   },
   {
     id: 'ryb089-oddaj-ci-ycie',
-    title: 'RYB089. Oddaję Ci życie',
-    tags: ['worship'],
+    title: 'RYB089. Oddaj Ci życie',
     filename: 'ryb089-oddaj-ci-ycie.cho'
   },
   {
     id: 'ryb090-sodkie-imi-jezus',
     title: 'RYB090. Słodkie imię Jezus',
-    tags: ['worship'],
     filename: 'ryb090-sodkie-imi-jezus.cho'
   },
   {
     id: 'ryb091-abba-ojcze',
     title: 'RYB091. Abba Ojcze',
-    tags: ['worship'],
     filename: 'ryb091-abba-ojcze.cho'
   },
   {
     id: 'ryb092-mw-do-mnie-panie',
     title: 'RYB092. Mów do mnie Panie',
-    tags: ['worship'],
     filename: 'ryb092-mw-do-mnie-panie.cho'
   },
   {
     id: 'ryb093-nie-ma-takich-gorzkich-ez',
     title: 'RYB093. Nie ma takich gorzkich łez',
-    tags: ['worship'],
     filename: 'ryb093-nie-ma-takich-gorzkich-ez.cho'
   },
   {
     id: 'ryb094-panie-my-twoje-dzieci',
     title: 'RYB094. Panie my Twoje dzieci',
-    tags: ['worship'],
     filename: 'ryb094-panie-my-twoje-dzieci.cho'
   },
   {
     id: 'ryb095-nasze-dni',
     title: 'RYB095. Nasze dni',
-    tags: ['worship'],
     filename: 'ryb095-nasze-dni.cho'
   },
   {
     id: 'ryb096-gdybym-nie-mia-ciebie',
     title: 'RYB096. Gdybym nie miał Ciebie',
-    tags: ['worship'],
     filename: 'ryb096-gdybym-nie-mia-ciebie.cho'
   },
   {
     id: 'ryb097-o-tak-tak-tak-panie',
-    title: 'RYB097. O tak tak tak Panie',
-    tags: ['worship'],
+    title: 'RYB097. O tak, tak, tak Panie',
     filename: 'ryb097-o-tak-tak-tak-panie.cho'
   },
   {
     id: 'ryb098-ty-jeste-ska',
     title: 'RYB098. Ty jesteś skałą',
-    tags: ['worship'],
     filename: 'ryb098-ty-jeste-ska.cho'
   },
   {
     id: 'ryb099-wejdmy-do-jego-bram',
     title: 'RYB099. Wejdźmy do Jego bram',
-    tags: ['worship'],
     filename: 'ryb099-wejdmy-do-jego-bram.cho'
   },
   {
     id: 'ryb100-niepojta-aska',
     title: 'RYB100. Niepojęta łaska',
-    tags: ['worship'],
     filename: 'ryb100-niepojta-aska.cho'
   },
   {
-    id: 'ryb101-przybdcie-dzi-do-wytej-rzeki',
-    title: 'RYB101. Przybądźcie dziś do świętej rzeki',
-    tags: ['worship'],
-    filename: 'ryb101-przybdcie-dzi-do-wytej-rzeki.cho'
+    id: 'ryb101-czemu-smutna-duszo-ma',
+    title: 'RYB101. Czemuś smutna duszo ma',
+    filename: 'ryb101-czemu-smutna-duszo-ma.cho'
   },
   {
-    id: 'ryb102-jezu-wycignij-swoj-do-mnie',
-    title: 'RYB102. Jezu wyciągnij swoją do mnie',
-    tags: ['worship'],
-    filename: 'ryb102-jezu-wycignij-swoj-do-mnie.cho'
+    id: 'ryb102-czcijmy-jezusa',
+    title: 'RYB102. Czcijmy Jezusa',
+    filename: 'ryb102-czcijmy-jezusa.cho'
   },
   {
-    id: 'ryb103-wszystko-co-yje',
-    title: 'RYB103. Wszystko co żyje',
-    tags: ['worship'],
-    filename: 'ryb103-wszystko-co-yje.cho'
+    id: 'ryb103-zanim-powiem-sowo',
+    title: 'RYB103. Zanim powiem słowo',
+    filename: 'ryb103-zanim-powiem-sowo.cho'
   },
   {
-    id: 'ryb104-chwal-duszo-moja-pana',
-    title: 'RYB104. Chwal duszo moja Pana',
-    tags: ['worship'],
-    filename: 'ryb104-chwal-duszo-moja-pana.cho'
+    id: 'ryb104-kto-zaufal-ci',
+    title: 'RYB104. Kto zaufal Ci',
+    filename: 'ryb104-kto-zaufal-ci.cho'
   },
   {
-    id: 'ryb105-mio-twoja-panie',
-    title: 'RYB105. Miłość Twoja Panie',
-    tags: ['worship'],
-    filename: 'ryb105-mio-twoja-panie.cho'
+    id: 'ryb105-na-twojej-drodze',
+    title: 'RYB105. Na Twojej drodze',
+    filename: 'ryb105-na-twojej-drodze.cho'
   },
   {
-    id: 'ryb106-duchu-wity-wzywamy-ci',
-    title: 'RYB106. Duchu Święty wzywamy Cię',
-    tags: ['worship'],
-    filename: 'ryb106-duchu-wity-wzywamy-ci.cho'
+    id: 'ryb106-bd-ci-sawi',
+    title: 'RYB106. Będę Cię sławił',
+    filename: 'ryb106-bd-ci-sawi.cho'
   },
   {
-    id: 'ryb107-jezu-chrystus-mym-panem-jest',
-    title: 'RYB107. Jezus Chrystus mym Panem jest',
-    tags: ['worship'],
-    filename: 'ryb107-jezu-chrystus-mym-panem-jest.cho'
+    id: 'ryb107-odwiecznym-bogiem',
+    title: 'RYB107. Odwiecznym Bogiem',
+    filename: 'ryb107-odwiecznym-bogiem.cho'
   },
   {
-    id: 'ryb108-swiat-nie-jest-domem-mym',
-    title: 'RYB108. Świat nie jest domem mym',
-    tags: ['worship'],
-    filename: 'ryb108-swiat-nie-jest-domem-mym.cho'
+    id: 'ryb108-bogosawi-ci',
+    title: 'RYB108. Błogosławię Cię',
+    filename: 'ryb108-bogosawi-ci.cho'
   },
   {
-    id: 'ryb109-pan-mym-pasterzem',
-    title: 'RYB109. Pan mym pasterzem',
-    tags: ['worship'],
-    filename: 'ryb109-pan-mym-pasterzem.cho'
+    id: 'ryb109-pan-zastpw',
+    title: 'RYB109. Pan Zastępów',
+    filename: 'ryb109-pan-zastpw.cho'
   },
   {
-    id: 'ryb110-panie-twa-dobroczy',
-    title: 'RYB110. Panie Twa dobroczyń',
-    tags: ['worship'],
-    filename: 'ryb110-panie-twa-dobroczy.cho'
+    id: 'ryb110-ciebie-pragnie-dusza',
+    title: 'RYB110. Ciebie pragnie dusza',
+    filename: 'ryb110-ciebie-pragnie-dusza.cho'
   },
   {
-    id: 'ryb111-twa-obecno',
-    title: 'RYB111. Twa obecność',
-    tags: ['worship'],
-    filename: 'ryb111-twa-obecno.cho'
+    id: 'ryb111-panie-zbadae-mnie-i-znasz',
+    title: 'RYB111. Panie zbadałeś mnie i znasz',
+    filename: 'ryb111-panie-zbadae-mnie-i-znasz.cho'
   },
   {
-    id: 'ryb112-panie-prosz-spraw',
-    title: 'RYB112. Panie proszę spraw',
-    tags: ['worship'],
-    filename: 'ryb112-panie-prosz-spraw.cho'
+    id: 'ryb112-objawienie-jana',
+    title: 'RYB112. Objawienie Jana',
+    filename: 'ryb112-objawienie-jana.cho'
   },
   {
-    id: 'ryb113-w-kadej-chwili',
-    title: 'RYB113. W każdej chwili',
-    tags: ['worship'],
-    filename: 'ryb113-w-kadej-chwili.cho'
+    id: 'ryb113-gdy-bylimy-jeszcze-grzesznikami',
+    title: 'RYB113. Gdy byliśmy jeszcze grzesznikami',
+    filename: 'ryb113-gdy-bylimy-jeszcze-grzesznikami.cho'
   },
   {
-    id: 'ryb114-panie-mj-przeniknij-mnie',
-    title: 'RYB114. Panie mój przeniknij mnie',
-    tags: ['worship'],
-    filename: 'ryb114-panie-mj-przeniknij-mnie.cho'
+    id: 'ryb114-najwyszy-bg',
+    title: 'RYB114. Najwyższy Bóg',
+    filename: 'ryb114-najwyszy-bg.cho'
   },
   {
-    id: 'ryb115-przy-at-nadziei',
-    title: 'RYB115. Przylądek nadziei',
-    tags: ['worship'],
-    filename: 'ryb115-przy-at-nadziei.cho'
+    id: 'ryb115-przyjdcie-radonie',
+    title: 'RYB115. Przyjdźcie radośnie',
+    filename: 'ryb115-przyjdcie-radonie.cho'
   },
   {
-    id: 'ryb116-radosnymi-bdziemy',
-    title: 'RYB116. Radosnymi będziemy',
-    tags: ['worship'],
-    filename: 'ryb116-radosnymi-bdziemy.cho'
+    id: 'ryb116-gono-do-pana-woam',
+    title: 'RYB116. Głośno do Pana wołam',
+    filename: 'ryb116-gono-do-pana-woam.cho'
   },
   {
-    id: 'ryb117-bo-ktowi-sawa-cze',
-    title: 'RYB117. Królowi sława cześć',
-    tags: ['worship'],
-    filename: 'ryb117-bo-ktowi-sawa-cze.cho'
+    id: 'ryb117-najpikniejszy',
+    title: 'RYB117. Najpiękniejszy',
+    filename: 'ryb117-najpikniejszy.cho'
   },
   {
-    id: 'ryb118-twoja-mio-jest-wspaniaa',
-    title: 'RYB118. Twoja miłość jest wspaniała',
-    tags: ['worship'],
-    filename: 'ryb118-twoja-mio-jest-wspaniaa.cho'
+    id: 'ryb118-strze-mnie-mj-boe',
+    title: 'RYB118. Strzeż mnie mój Boże',
+    filename: 'ryb118-strze-mnie-mj-boe.cho'
   },
   {
-    id: 'ryb119-serce-mode-u-stpu-gry',
-    title: 'RYB119. Serce złożę u stópu góry',
-    tags: ['worship'],
-    filename: 'ryb119-serce-mode-u-stpu-gry.cho'
+    id: 'ryb119-szukajcie-pana',
+    title: 'RYB119. Szukajcie Pana',
+    filename: 'ryb119-szukajcie-pana.cho'
   },
   {
-    id: 'ryb120-uwielbiam-najwikszy-cud',
-    title: 'RYB120. Uwielbiam największy cud',
-    tags: ['worship'],
-    filename: 'ryb120-uwielbiam-najwikszy-cud.cho'
+    id: 'ryb120-otwrz-me-oczy-o-panie',
+    title: 'RYB120. Otwórz me oczy o Panie',
+    filename: 'ryb120-otwrz-me-oczy-o-panie.cho'
   },
   {
-    id: 'ryb121-to-kim-jestem',
-    title: 'RYB121. To kim jestem',
-    tags: ['worship'],
-    filename: 'ryb121-to-kim-jestem.cho'
+    id: 'ryb121-on-istniejc',
+    title: 'RYB121. On istniejąc',
+    filename: 'ryb121-on-istniejc.cho'
   },
   {
-    id: 'ryb122-to-kroki-me',
-    title: 'RYB122. To kroki me',
-    tags: ['worship'],
-    filename: 'ryb122-to-kroki-me.cho'
+    id: 'ryb122-zmiuj-si-panie',
+    title: 'RYB122. Zmiłuj się Panie',
+    filename: 'ryb122-zmiuj-si-panie.cho'
   },
   {
-    id: 'ryb123-duchu-wity-ja',
-    title: 'RYB123. Duchu Święty ja',
-    tags: ['worship'],
-    filename: 'ryb123-duchu-wity-ja.cho'
+    id: 'ryb123-chwale-ma-duszo-mocarza',
+    title: 'RYB123. Chwalże, ma duszo, Mocarza',
+    filename: 'ryb123-chwale-ma-duszo-mocarza.cho'
   },
   {
-    id: 'ryb124-a-ja-i-dom-mj-suby',
-    title: 'RYB124. A ja i dom mój służyć',
-    tags: ['worship'],
-    filename: 'ryb124-a-ja-i-dom-mj-suby.cho'
+    id: 'ryb124-wity',
+    title: 'RYB124. Święty',
+    filename: 'ryb124-wity.cho'
   },
   {
-    id: 'ryb125-panie-nie-jestem-godzien',
-    title: 'RYB125. Panie nie jestem godzien',
-    tags: ['worship'],
-    filename: 'ryb125-panie-nie-jestem-godzien.cho'
+    id: 'ryb125-ukojenie',
+    title: 'RYB125. Ukojenie',
+    filename: 'ryb125-ukojenie.cho'
   },
   {
-    id: 'ryb126-godzien-godzien-jest-bg',
-    title: 'RYB126. Godzien godzien jest Bóg',
-    tags: ['worship'],
-    filename: 'ryb126-godzien-godzien-jest-bg.cho'
+    id: 'ryb126-on-moim-panem',
+    title: 'RYB126. On moim Panem',
+    filename: 'ryb126-on-moim-panem.cho'
   },
   {
-    id: 'ryb127-chwal-pana-duszo-moja',
-    title: 'RYB127. Chwal Pana duszo moja',
-    tags: ['worship'],
-    filename: 'ryb127-chwal-pana-duszo-moja.cho'
+    id: 'ryb127-cay-wiat-niech-pozna',
+    title: 'RYB127. Cały świat niech pozna',
+    filename: 'ryb127-cay-wiat-niech-pozna.cho'
   },
   {
-    id: 'ryb128-tak-da-ojciec-dobry',
-    title: 'RYB128. Tak da Ojciec dobry',
-    tags: ['worship'],
-    filename: 'ryb128-tak-da-ojciec-dobry.cho'
+    id: 'ryb128-postanowiem-pj-za-jezusem',
+    title: 'RYB128. Postanowiłem pójść za Jezusem',
+    filename: 'ryb128-postanowiem-pj-za-jezusem.cho'
   },
   {
-    id: 'ryb129-wywyszy-boga',
-    title: 'RYB129. Wywyższę Boga',
-    tags: ['worship'],
-    filename: 'ryb129-wywyszy-boga.cho'
+    id: 'ryb129-nadziej-odnalazem-w-nim',
+    title: 'RYB129. Nadzieję odnalazłem w Nim',
+    filename: 'ryb129-nadziej-odnalazem-w-nim.cho'
   },
   {
-    id: 'ryb130-to-przykazanie-mam',
-    title: 'RYB130. To przykazanie mam',
-    tags: ['worship'],
-    filename: 'ryb130-to-przykazanie-mam.cho'
+    id: 'ryb130-kt-jest-jak-on',
+    title: 'RYB130. Któż jest jak ON - Wszystko poddane jest',
+    filename: 'ryb130-kt-jest-jak-on---wszystko-poddane-jest.cho'
   },
   {
-    id: 'ryb131-czym-tak-naprawd-jest',
-    title: 'RYB131. Czym tak naprawdę jest',
-    tags: ['worship'],
-    filename: 'ryb131-czym-tak-naprawd-jest.cho'
+    id: 'ryb131-przez-dobr-moc-tw-panie',
+    title: 'RYB131. Przez dobrą moc Twą Panie',
+    filename: 'ryb131-przez-dobr-moc-tw-panie.cho'
   },
   {
     id: 'ryb132-gry-do-gry',
     title: 'RYB132. Góry do góry',
-    tags: ['worship'],
     filename: 'ryb132-gry-do-gry.cho'
   },
   {
     id: 'ryb133-siedem',
     title: 'RYB133. Siedem',
-    tags: ['worship'],
     filename: 'ryb133-siedem.cho'
   }
 ];
