@@ -1051,8 +1051,6 @@ export const songs: SongMetadata[] = [
   {
     id: 'ryb089-oddaj-ci-ycie',
     title: 'RYB089. Oddaję Ci życie',
-    artist: 'Autor nieznany',
-    tags: ['worship', 'ryb'],
     filename: 'ryb089-oddaj-ci-ycie.cho'
   },
   {
