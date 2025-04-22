@@ -27,7 +27,9 @@ export default defineConfig({
         try {
           mkdirSync(distSongsDir, { recursive: true })
           const songFiles = readdirSync(songsDir).filter(file => file.endsWith('.cho'))
+          console.log('Found song files:', songFiles)
           songFiles.forEach(file => {
+            console.log('Copying file:', file)
             copyFileSync(
               resolve(songsDir, file),
               resolve(distSongsDir, file)
