@@ -12,8 +12,11 @@ export class SongService {
   async loadSong(filename: string): Promise<Song | null> {
     try {
       const baseUrl = import.meta.env.BASE_URL;
+      console.log('Loading song from:', `${baseUrl}data/songs/${filename}`);
       const response = await fetch(`${baseUrl}data/songs/${filename}`);
+      console.log('Response status:', response.status);
       const text = await response.text();
+      console.log('Loaded text length:', text.length);
       const song = this.parser.parse(text);
       return song;
     } catch (error) {
