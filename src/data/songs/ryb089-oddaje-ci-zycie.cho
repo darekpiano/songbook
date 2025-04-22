@@ -1,25 +1,30 @@
 ﻿{title: RYB089. Oddaję Ci życie}
-{artist: Autor nieznany }
+{artist: Autor nieznany}
+
+{start_of_verse: Zwrotka 1}
+Oddaję Ci życie swe Ty Panie wiesz jakie jest
+Za wszystko przepraszam Cię co było grzechem i złem
+{end_of_verse: Zwrotka 1}
 
 {start_of_verse: Zwrotka 2}
 Oczyść Panie duszę mą zapomnij mi moje winy
-Obmyj mnie Twą Świętą krwią podaruj mi nowe życie D e7 A4
+Obmyj mnie Twą Świętą krwią podaruj mi nowe życie [D][E7][A4]
 Daj Ducha Świętego mi by odtąd prowadził mnie
 Rozpalił dziś w sercu mym ognisko miłości Twej
 {end_of_verse: Zwrotka 2}
 
 {start_of_verse: Zwrotka 3}
 Przyjdź zamieszkaj w domu mym z Twą łaską i miłosierdziem
-Otocz mnie ramieniem Swym bo ja D e7 A4
+Otocz mnie ramieniem Swym bo ja [D][E7][A4]
 {end_of_verse: Zwrotka 3}
 
 {start_of_verse: Zwrotka 4}
 Wybawiłeś duszę mą umarłeś za moje winy
-Jezu jesteś Panem mym Zbawicielem mym D e7 A4
+Jezu jesteś Panem mym Zbawicielem mym [D][E7][A4]
 {end_of_verse: Zwrotka 4}
 
 {start_of_chorus: Refren}
-D e7/D A4 h
+[D][E7/D][A4][H]
 Oddaję Ci życie swe Ty Panie wiesz jakie jest
 Za wszystko przepraszam Cię co było grzechem i złem
 {end_of_chorus: Refren}
