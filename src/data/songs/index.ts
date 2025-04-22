@@ -1049,7 +1049,7 @@ export const songs: SongMetadata[] = [
     filename: 'ryb088-nie-ma-lepszej-rzeczy.cho'
   },
   {
-    id: 'ryb089-oddaje-ci-zycie',
+    id: 'ryb089-oddaje-ci',
     title: 'RYB089. Oddaję Ci życie',
     filename: 'ryb089-oddaje-ci-zycie.cho'
   },
